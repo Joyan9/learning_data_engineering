@@ -1,5 +1,6 @@
 # Row Vs Column Oriented Databases
 We are going to mainly cover how row-oriented databases work and how column-oriented databases work.
+Follows from this video: https://youtu.be/Vw1fCeD06YI?si=w70-xS5d7wAm6Hu8
 
 ### Sample table 
 We will be working with this table for understanding the difference
