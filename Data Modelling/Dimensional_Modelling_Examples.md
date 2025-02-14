@@ -180,4 +180,88 @@ Let's design each dimension table one by one. We'll start with the main dimensio
 | course type (self paced / instructor led) | TEXT | No | No |
 | course price | DECIMAL | No | Yes - type 2 |
 | course rating | INT | No | Yes - type 2 or type 3 |
+| course_description | TEXT | No | No |
+| course_duration_hours | INT | No | No |
+| course_language | TEXT | No | No |
+| instructor_key | INT | No | No |
 
+#### DIM_STUDENT
+| Column | Data Type | Part of Hierarchy | SCD|
+|--------|-----------|-------------------|----|
+| student_id (primary key) | INT | no | no |
+| student_name | TEXT | No | No|
+| registration_date | DATETIME | No | No |
+| country | TEXT | No | No |
+| region | TEXT | No | No |
+| city | TEXT | No | No |
+| age | TEXT | No | No |
+| gender | ENUM | No | No |
+| preferred_language | TEXT | No | No |
+| account_status (active, inactive, churn) | TEXT | No | No |
+| occupation | TEXT | No | Yes - Type 2 |
+| education_level | TEXT | No | No |
+| major | TEXT | No | No |
+
+#### DIM_DATE
+| Column | Data Type | Part of Hierarchy | SCD|
+|--------|-----------|-------------------|----|
+| date_time (primary key) | DATETIME (UTC) | no | no |
+| date | DATE | no | no |
+| hour | HOUR | no | no |
+| day_of_week | INT | no | no |
+| day_name | TEXT | no | no |
+| week_number | INT | no | no |
+| month | INT | no | no |
+| month_name | TEXT | no | no |
+| year | INT | no | no |
+| quarter | INT | no | no |
+
+
+#### DIM_PAYMENT_TYPE
+| Column | Data Type | Part of Hierarchy | SCD|
+|--------|-----------|-------------------|----|
+| payment_type_id (primary key) | INT | no | no |
+| payment_method | TEXT | yes | no |
+| payment_provider | TEXT | yes | no |
+| payment_currency | TEXT | no | no |
+| is_emi_available | BOOLEAN | no | no |
+| emi_tenure_months | INT | no | no |
+| emi_provider | TEXT | no | no |
+| interest_rate | DECIMAL | no | Type 2 |
+| processing_fee | DECIMAL | no | Type 2 |
+| discount_type | TEXT | no | no |
+| promotion_code | TEXT | no | no |
+| promotion_type | TEXT | no | no |
+
+
+### Step 6: Building Fact Tables
+#### FACT_COURSE_ENROLLMENT
+| Column | Data Type | Type |
+|--------|-----------|------|
+|enrollment_id |INT|Non-additive |
+|student_id |INT|Non-additive |
+|course_id |INT|Non-additive |
+|enrollment_date |DATETIME|Non-additive |
+|payment_type_id |DATETIME|Non-additive |
+|original_price | FLOAT | Additive |
+|discount_amount | FLOAT | Additive |
+|final_paid_amount | FLOAT | Additive |
+
+#### FACT_EMI_PAYMENTS
+| Column | Data Type | Type |
+|--------|-----------|------|
+|payment_id |INT|Non-additive |
+|student_id |INT|Non-additive |
+|course_id |INT|Non-additive |
+|enrollment_date |DATETIME|Non-additive |
+|payment_date |DATETIME|Non-additive |
+|payment_type_id |DATETIME|Non-additive |
+|original_price | FLOAT | Additive |
+|emi_amount | FLOAT | Additive |
+|remaining_amount | FLOAT | Additive |
+|emi_payment_number | INT | Non-additive |
+
+
+
+### Final Data Model
+![online_course_enrollments_model](online_course_enrollments_model.PNG)
