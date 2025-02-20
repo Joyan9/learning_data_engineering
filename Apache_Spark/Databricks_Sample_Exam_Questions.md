@@ -457,3 +457,5 @@ Which of the following lines of code prints the schema of a DataFrame?
 
 ### Solution
 D. `DataFrame.printSchema()`
+
+## Question 41
