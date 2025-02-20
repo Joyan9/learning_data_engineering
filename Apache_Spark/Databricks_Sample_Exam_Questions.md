@@ -142,3 +142,318 @@ A. An out-of-memory error occurs when either the driver or an executor does not 
 - Two main scenarios for OOM
 1. Driver OOM: When collecting too much data to the driver say using `collect()`
 2. Executor OOM: When an executor can't handle the data partition size
+
+
+## Question 14
+Which of the following is the default storage level for persist() for a non-streaming DataFrame/Dataset?
+
+### Solution
+A. MEMORY_AND_DISK
+
+This is the default storage level for both `cache()` and `persist()`. The difference being that in `persist` you can change the storage level.
+
+## Question 15
+Which of the following describes a broadcast variable?
+
+## Solution
+D. A broadcast variable is entirely cached on each worker node so it doesn't need to be shipped or shuffled between nodes with each stage.
+
+The best example I can think of is when you have a large table and another small look-up table, then you can choose a broadcast join (by default in Spark if one table is less than 10MB then it becomes a broadcast join) and basically send the copy of the lookup table to all the nodes for the join to happen within the partition itself.
+
+## Question 16
+Which of the following operations is most likely to induce a skew in the size of your data's partitions?
+
+## Solution
+D. `df.coalesce(n)`
+
+The `coalesce()` operation reduces the number of partitions. If the desired number of partitions is greater than the number of executors then it will merge the partitions within executors and avoid shuffle.
+
+Since it only merges adjacent partitions, some partitions may end up much larger than others, leading to skewed data distribution.
+
+If reducing the number of partitions, prefer `repartition(n)` to redistribute data evenly. Only use `coalesce(n)` if you want to reduce partitions without a full shuffle, but be aware of potential data skew.
+
+## Question 17
+Which of the following data structures are Spark DataFrames built on top of?
+
+### Solution
+C. RDDs
+
+**Resilient Distributed Datasets Features**
+- **Resilient** - If a node/executor crashes, then Spark will use it's lineage to track back the lost progress
+- **Distributed** - Data is spread across multiple nodes
+- **Immutable** - This is required such that you can preserve the original data and trace back the steps in case of a failure. Any transformation applied to a RDD results in a new RDD
+- **Lazy Evaluation** - It follows lazy evaluation such that it can keep building an optiised plan for executing the transformation when an action is called
+- **Partitioned** - dataset is also partitioned in smaller chunks for parallelization
+
+## Question 18
+Which of the following code blocks returns a DataFrame containing only column storeId and column division from DataFrame storesDF?
+
+### Solution
+
+```
+A. storesDF.select("storeId").select("division")
+B. storesDF.select(storeId, division)
+C. storesDF.select("storeId", "division")
+D. storesDF.select(col("storeId", "division"))
+E. storesDF.select(storeId).select(division)
+```
+
+C. `storesDF.select("storeId", "division")`
+
+## Question 19
+Which of the following code blocks returns a DataFrame containing all columns from DataFrame storesDF except for column sqft and column customerSatisfaction?
+
+### Solution
+A. `storesDF.drop("sqft", "customerSatisfaction")`
+
+
+❌ **B. `storesDF.select("storeId", "open", "openDate", "division")`**  
+- This explicitly selects **only a subset** of columns, rather than removing specific ones.  
+- If `storesDF` had additional columns, they would be missing from the result.  
+
+❌ **C. `storesDF.select(-col(sqft), -col(customerSatisfaction))`**  
+- PySpark **does not support** negating column selections like `-col(column_name)`.  
+- This would result in a **syntax error**.  
+
+❌ **D. `storesDF.drop(sqft, customerSatisfaction)`**  
+- The `drop()` method requires **column names as strings**, but `sqft` and `customerSatisfaction` here are not in quotes.  
+- This would cause an **undefined variable error**.  
+
+❌ **E. `storesDF.drop(col(sqft), col(customerSatisfaction))`**  
+- The `drop()` method **expects column names as strings**, not `col()` objects.  
+- Using `col(sqft)` and `col(customerSatisfaction)` would cause an **argument type error**.  
+
+
+## Question 20
+The below code shown block contains an error. The code block is intended to return a DataFrame containing only the rows from DataFrame `storesDF` where the value in DataFrame storesDF's
+"sqft" column is less than or equal to 25,000. Assume DataFrame storesDF is the only defined language variable. Identify the error
+
+`storesDF.filter(sqft <= 25000)`
+
+### Solution
+B. The column name sqft needs to be quoted and wrapped in the col() function like
+`storesDF.filter(col("sqft") <= 25000)`
+
+`col()` helps Spark understand that an operation is being applied on a column and allows the Catalyst Optimizer to rearrange and optimise the query execution.
+
+## Question 21
+The code block shown below should return a DataFrame containing only the rows from DataFrame storesDF where the value in column sqft is less than or equal to 25,000 OR the value in column
+customerSatisfaction is greater than or equal to 30. Choose the response that correctly fills in the numbered blanks within the code block to complete this task.
+
+Code block:
+storesDF.__1__(__2__ __3__ __4__)
+
+### Solution
+A.
+`storesDF.filter((col("sqft")<=25000)|(col("customerSatisfaction")>=30))`
+
+## Question 22
+Which of the following operations can be used to convert a DataFrame column from one type to another type?
+
+### Solution
+A. `col().cast()`
+
+`df.withColumn("age", col("age").cast("float"))`
+
+## Question 23
+Which of the following code blocks returns a new DataFrame with a new column sqft100 that is 1/100th of column sqft in DataFrame storesDF? 
+
+Note that column sqft100 is not in the original
+DataFrame storesDF
+
+### Solution
+D. `storesDF.withColumn("sqft100", col("sqft") / 100)`
+
+## Question 24
+Which of the following code blocks returns a new DataFrame from DataFrame storesDF where column numberOfManagers is the constant integer 1?
+
+### Solution
+C. `storesDF.withColumn("numberOfManagers", lit(1))`
+
+`lit()` is used to create a literal constant value.
+
+## Question 25
+The code block shown below contains an error. The code block intends to return a new DataFrame where column storeCategory from DataFrame storesDF is split at the underscore character
+into column storeValueCategory and column storeSizeCategory. Identify the error.
+
+```
+(storesDF.withColumn(
+"storeValueCategory", col("storeCategory").split("_")[0]
+).withColumn(
+"storeSizeCategory", col("storeCategory").split("_")[1]
+)
+)
+```
+
+### Solution
+B. The split() operation comes from the imported functions object. It accepts a Column object and split character as arguments. It is not a method of a Column object.
+
+```
+storesDF.withColumn(
+"storeValueCategory", F.split(col("storeCategory"), "_")[0]
+)
+```
+
+## Question 26
+Which of the following operations can be used to split an array column into an individual DataFrame row for each element in the array?
+
+### Solution
+C. `explode()`
+
+`df.withColumn("exploded", explode(col("arr")))`
+
+## Question 27
+Which of the following code blocks returns a new DataFrame where column storeCategory is an all-lowercase version of column storeCategory in DataFrame storesDF?
+
+### Solution
+A. `storesDF.withColumn("storeCategory", lower(col("storeCategory")))`
+
+## Question 28
+The code block shown below contains an error. The code block is intended to return a new DataFrame where column division from DataFrame storesDF has been renamed to column state and column managerName from DataFrame storesDF has been renamed to column
+managerFullName. Identify the error.
+
+```
+(storesDF.withColumnRenamed("state", "division")
+.withColumnRenamed("managerFullName", "managerName"))
+```
+### Solution
+D. The first argument to operation withColumnRenamed() should be the old column name and the second argument should be the new column name
+
+`df.withColumnRenamed(existing, new)`
+
+There's also another method
+`df.withColumnsRenamed({'old_name':'new_name', 'old_name_2':'new_name_2'})`
+
+## Question 29
+Which of the following code blocks returns a DataFrame where rows in DataFrame storesDF containing missing values in every column have been dropped?
+
+### Solution
+E. `storesDF.na.drop("all")`
+
+With the `drop("all")` arguement, Spark will return those rows where all column values are NULL
+
+`drop()`: drops rows containing any NULL value, this is default.
+
+## Question 30
+Which of the following operations fails to return a DataFrame where every row is unique?
+
+### Solution
+E. `DataFrame.drop_duplicates(subset = "all")`
+
+"all" is not a valid argument for the subset parameter. Default arguement is None.
+
+## Question 31
+Which of the following code blocks will not always return the exact number of distinct values in column division?
+
+### Solution
+A. `storesDF.agg(approx_count_distinct(col("division")).alias("divisionDistinct"))`
+
+- It uses the HyperLogLog algorithm which provides a close estimate while consuming lesser resources
+- Faster and more memory efficient than countDistinct()
+
+## Question 32
+The code block shown below should return a new DataFrame with the mean of column sqft from DataFrame storesDF in column sqftMean. 
+
+Choose the response that correctly fills in the
+numbered blanks within the code block to complete this task.
+Code block:
+`storesDF.__1__(__2__(__3__).alias("sqftMean"))`
+
+### Solution
+
+`storesDF.agg(mean(col("sqft")))`
+
+In Spark mean() and avg() are the same functions.
+
+
+## Question 33
+Which of the following code blocks returns the number of rows in DataFrame storesDF?
+
+### Solution
+D. `storesDF.count()`
+
+## Question 34
+Which of the following code blocks returns the sum of the values in column sqft in DataFrame storesDF grouped by distinct value in column division?
+
+### Solution
+E. `storesDF.groupBy("division").agg(sum(col("sqft")))`
+
+## Question 35
+Which of the following code blocks returns a DataFrame containing summary statistics only for column sqft in DataFrame storesDF?
+
+### Solution
+B. `storesDF.describe("sqft")`
+
+## Question 36
+Which of the following operations can be used to sort the rows of a DataFrame?
+
+### Solution
+A. `sort() and orderBy()`
+
+```python
+# Using sort()
+df.sort("columnName", ascending=False)
+
+# Using orderBy()
+df.orderBy("columnName", ascending=False)
+```
+
+## Question 37
+The code block shown below contains an error. The code block is intended to return a 15 percent sample of rows from DataFrame storesDF without replacement. Identify the error.
+
+Code block:
+`storesDF.sample(True, fraction = 0.15)`
+
+### Solution
+E. The first argument True sets the sampling to be with replacement.
+
+Syntax for sample
+`df.sample(withReplacement = True / False, fraction, seed (optional))`
+
+```python
+# say you want to sample 10% of the rows without replacement
+df.sample(withReplacement=False, fraction=0.1)
+
+# with replacement
+df.sample(withReplacement=True, fraction=0.1, seed=42)
+```
+
+
+## Question 38
+Which of the following operations can be used to return the top n rows from a DataFrame?
+
+### Solution
+B. `DataFrame.take(n)`
+
+Difference between `take(n)` and `show(n)`, is that the latter only prints the rows -  it does not return anything. Whereas, `take(n)` returns the number of specifed rows
+
+`collect()`: Used to fetch all rows to driver node
+
+```python
+# Fetch the top 5 rows as a list of Row objects
+top_rows = df.take(5)
+
+top_rows.show() # this will only print them to console
+```
+
+## Question 39
+The code block shown below should extract the value for column sqft from the first row of DataFrame storesDF. Choose the response that correctly fills in the numbered blanks within the
+code block to complete this task.
+
+`__1__.__2__.__3__`
+
+## Solution
+D.
+1. storesDF
+2. first()
+3. sqft
+
+`first()`: returns first row of dataframe
+
+`storesDF.first()["sqft"]`
+
+## Question 40
+Which of the following lines of code prints the schema of a DataFrame?
+
+### Solution
+D. `DataFrame.printSchema()`
