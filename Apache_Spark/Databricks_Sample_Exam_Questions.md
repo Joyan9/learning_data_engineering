@@ -459,6 +459,253 @@ Which of the following lines of code prints the schema of a DataFrame?
 D. `DataFrame.printSchema()`
 
 ## Question 41
+In what order should the below lines of code be run in order to create and register a SQL UDF named "ASSESS_PERFORMANCE" using the Python function assessPerformance and apply it to
+column customerSatistfaction in table stores?
+
 ### Solution
+B. 1, 4
+**Correct Execution Order**
+- **Step 1:** Register the function correctly using `spark.udf.register("ASSESS_PERFORMANCE", assessPerformance)`.  
+- **Step 2:** Execute the SQL query using `ASSESS_PERFORMANCE(customerSatisfaction)` in the `SELECT` statement.
+
+
+The method of creating and registering a UDF
+```python
+
+# define a UDF
+def my_custom_udf(col):
+    return col*2
+
+# register the UDF, with the udf() function
+custom_udf = F.udf(my_custom_udf, StringType()) # specify the type for the return
+```
+
+UDF for Spark SQL
+```python
+# Register the function as a SQL UDF
+spark.udf.register("MY_CUSTOM_UDF", my_custom_udf, StringType())
+
+# Use it in a SQL query
+spark.sql("SELECT MY_CUSTOM_UDF(existing_column) FROM my_table")
+```
+
 
 ## Question 42
+In what order should the below lines of code be run in order to create a Python UDF `assessPerformanceUDF()` using the integer-returning Python function `assessPerformance`
+and apply it to column `customerSatisfaction` in DataFrame `storesDF`?
+
+### Solution
+A. 3, 4
+
+```python
+# register the UDF
+assessPerformanceUDF = F.udf(assessPerformance, IntegerType())
+
+# apply UDF
+storesDF.withColumn('result', 
+                    assessPerformanceUDF(F.col("customerSatisfaction"))
+                    )
+```
+
+## Question 43
+Which of the following operations can execute a SQL query on a table?
+
+### Solution 
+C. `spark.sql()`
+
+## Question 44
+Which of the following code blocks creates a single-column DataFrame from Python list `years` which is made up of integers?
+
+### Solution
+B. `spark.createDataFrame(years, IntegerType())`
+
+## Question 45
+Which of the following operations can be used to cache a DataFrame only in Spark’s memory assuming the default arguments can be updated?
+
+### Solution
+D. `DataFrame.persist()`
+
+`cache()` has only 1 storage level - `MEMORY_AND_DISK`, it will try to store the DF on memory and spill to Disk if too big.
+
+
+## Question 46
+The code block shown below contains an error. The code block is intended to return a new 4-partition DataFrame from the 8-partition DataFrame storesDF without inducing a shuffle.
+
+Identify the error.
+Code block:
+`storesDF.repartition(4)`
+
+### Solution
+D. The `repartition` operation induced a full shuffle. The `coalesce` operation should be used instead.
+
+## Question 47
+Which of the following code blocks will always return a new 12-partition DataFrame from the 8-partition DataFrame storesDF?
+
+### Solution
+C. `storesDF.repartition(12)`
+
+## Question 48
+Which of the following Spark config properties represents the number of partitions used in wide transformations like `join()`?
+
+### Solution
+A. `spark.sql.shuffle.partitions`
+
+## Question 49
+In what order should the below lines of code be run in order to return a DataFrame containing a column `openDateString`, a string representation of Java’s SimpleDateFormat?
+
+
+Note that column `openDate` is of type integer and represents a date in the UNIX epoch format — the number of seconds since midnight on January 1st, 1970.
+
+An example of Java's SimpleDateFormat is "Sunday, Dec 4, 2008 1:05 PM".
+
+### Solution
+B. 2, 1
+
+
+**Understanding Each Line of Code**
+| Line | Explanation | Issues? |
+|------|------------|---------|
+| **1** `storesDF.withColumn("openDateString", from_unixtime(col("openDate"), simpleDateFormat))` | ✅ Uses `from_unixtime()` correctly to format the date using `simpleDateFormat`. | Works, but `simpleDateFormat` must be defined first! |
+| **2** `simpleDateFormat = "EEEE, MMM d, yyyy h:mm a"` | ✅ Defines the correct Java `SimpleDateFormat` pattern. | Required before using in Line 1. |
+| **3** `storesDF.withColumn("openDateString", from_unixtime(col("openDate"), SimpleDateFormat()))` | ❌ `SimpleDateFormat()` is a **Java class**, not a PySpark function. | Incorrect usage. |
+| **4** `storesDF.withColumn("openDateString", date_format(col("openDate"), simpleDateFormat))` | ❌ `date_format()` expects a **timestamp**, but `openDate` is an integer. | Wrong function choice. |
+| **5** `storesDF.withColumn("openDateString", date_format(col("openDate"), SimpleDateFormat()))` | ❌ Same issue as Line 3; `SimpleDateFormat()` is not a valid argument. | Incorrect usage. |
+| **6** `simpleDateFormat = "wd, MMM d, yyyy h:mm a"` | ✅ Defines a format, but it's incorrect (`wd` is not valid for weekdays). | Wrong format. |
+
+
+```python
+from pyspark.sql.functions import from_unixtime, col
+
+# Step 1: Define the date format
+simpleDateFormat = "EEEE, MMM d, yyyy h:mm a"
+
+# Step 2: Convert UNIX timestamp to formatted string
+storesDF = storesDF.withColumn("openDateString", from_unixtime(col("openDate"), simpleDateFormat))
+```
+
+## Question 50
+Which of the following code blocks returns a DataFrame containing a column `month`, an integer representation of the month from column `openDate` from DataFrame storesDF?
+
+Note that column `openDate` is of type integer and represents a date in the UNIX epoch format — the number of seconds since midnight on January 1st, 1970
+
+### Solution
+B. 
+```python
+storesDF.withColumn("openTimestamp",
+                    col("openDate").cast("Timestamp"))/
+                    .withColumn("month",
+                                month(col("openTimestamp"))
+                                )
+```
+
+## Question 51
+Which of the following operations performs an inner join on two DataFrames?
+
+### Solution
+C. Standalone `join()` function
+
+`join()` Function syntax
+
+```python
+df1.join(df2, 
+        on = [cols*] ,
+        how = "inner default/left/right/outer/left_semi/left_anti/cross")
+```
+
+## Question 52
+Which of the following code blocks returns a new DataFrame that is the result of an outer join between DataFrame `storesDF` and DataFrame `employeesDF` on column `storeId`?
+
+### Solution
+A. `storesDF.join(employeesDF, "storeId", "outer")`
+
+
+## Question 53
+The below code block contains an error. The code block is intended to return a new DataFrame that is the result of an inner join between DataFrame `storesDF` and DataFrame `employeesDF` on column `storeId` and column `employeeId` which are in both DataFrames. Identify the error.
+
+`storesDF.join(employeesDF, [col("storeId"), col("employeeId")])`
+
+### Solution
+E. The references to "storeId" and "employeeId" should not be inside the col() function — removing the col() function should result in a successful join.
+
+## Question 54
+Which of the following Spark properties is used to configure the broadcasting of a DataFrame without the use of the `broadcast()` operation?
+
+### Solution
+A. `spark.sql.autoBroadcastJoinThreshold`
+
+Configures the maximum size in bytes for a table that will be broadcast to all worker nodes when performing a join. By setting this value to -1, broadcasting can be disabled. The default value is the same as `spark.sql.autoBroadcastJoinThreshold`. Note that, this config is used only in adaptive framework.
+
+## Question 55
+The code block shown below should return a new DataFrame that is the result of a cross join between DataFrame `storesDF` and DataFrame `employeesDF`. Choose the response that correctly fills in the numbered blanks within the code block to complete this task.
+`__1__.__2__(__3__)`
+
+### Solution
+E. 
+1. storesDF
+2. crossJoin
+3. employeesDF
+
+`crossJoin()` Syntax
+
+`df1.crossJoin(df2)`
+
+
+## Question 56
+Which of the following operations performs a position-wise union on two DataFrames?
+
+### Solution 
+E. `DataFrame.union()`
+
+- This is equivalent to `UNION ALL` in SQL. `UNION` removes duplicates, whereas `UNION ALL` keeps all the rows including duplicates
+- Both dataframes need to have the same schema (column names and types).
+
+- Use `unionByName()` when column order differs but names are same
+
+## Question 57
+Which of the following code blocks writes DataFrame `storesDF` to file path `filePath` as parquet?
+
+### Solution
+E. `storesDF.write.parquet(filePath)`
+
+```python
+# basic syntax for write function
+df.write.format('specify_format').option('key', 'value').save('path')
+
+# direct write functions
+df.write.parquet(file_path)
+df.write.csv(file_path)
+df.write.json(file_path)
+```
+
+## Question 58
+The code block shown below contains an error. The code block is intended to write DataFrame `storesDF` to file path `filePath` as parquet and partition by values in column `division`. Identify the error.
+
+`storesDF.write.repartition("division").parquet(filePath)`
+
+### Solution
+C. There is no `repartition()` operation for DataFrameWriter — the `partitionBy()` operation should be used instead.
+
+`storesDF.write.partitionBy('division').parquet(filePath)`
+
+
+## Question 59
+Which of the following code blocks reads a parquet at the file path filePath into a DataFrame?
+
+### Solution
+D. `spark.read.parquet(filePath)`
+
+## Question 60
+Which of the following code blocks reads JSON at the file path `filePath` into a DataFrame with the specified schema `schema`?
+
+### Solution
+E. `spark.read.schema(schema).format("json").load(filePath)`
+
+
+**Why the other options are incorrect:**
+- **A.** `spark.read().schema(schema).format(json).load(filePath)` → Incorrect because the format should be `"json"` (as a string) instead of just `json`.
+- **B.** `spark.read().schema(schema).format("json").load(filePath)` → The correct syntax for `spark.read` is `spark.read.schema()` instead of `spark.read()`. This extra `()` is not needed.
+- **C.** `spark.read.schema("schema").format("json").load(filePath)` → `"schema"` should not be a string. It should be a `StructType` object.
+- **D.** `spark.read.schema("schema").format("json").load(filePath)` → Similar to **C**, the schema should be a `StructType` object, not a string.
+
+
+
