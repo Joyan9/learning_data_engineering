@@ -1,0 +1,1277 @@
+version: 2
+version_hash: PFX9VoFpCl/AA3bY+A/mM1b/6V67woKy33y30GOZQLw=
+engine_version: 11
+name: github_source
+tables:
+  _dlt_version:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: false
+      schema:
+        data_type: text
+        nullable: false
+    write_disposition: skip
+    resource: _dlt_version
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        data_type: text
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: true
+      status:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_version_hash:
+        data_type: text
+        nullable: true
+    write_disposition: skip
+    resource: _dlt_loads
+    description: Created by DLT. Tracks completed loads
+  github_pulls:
+    columns:
+      url:
+        data_type: text
+        nullable: true
+      id:
+        data_type: bigint
+        nullable: true
+      node_id:
+        data_type: text
+        nullable: true
+      html_url:
+        data_type: text
+        nullable: true
+      diff_url:
+        data_type: text
+        nullable: true
+      patch_url:
+        data_type: text
+        nullable: true
+      issue_url:
+        data_type: text
+        nullable: true
+      number:
+        data_type: bigint
+        nullable: true
+      state:
+        data_type: text
+        nullable: true
+      locked:
+        data_type: bool
+        nullable: true
+      title:
+        data_type: text
+        nullable: true
+      user__login:
+        data_type: text
+        nullable: true
+      user__id:
+        data_type: bigint
+        nullable: true
+      user__node_id:
+        data_type: text
+        nullable: true
+      user__avatar_url:
+        data_type: text
+        nullable: true
+      user__gravatar_id:
+        data_type: text
+        nullable: true
+      user__url:
+        data_type: text
+        nullable: true
+      user__html_url:
+        data_type: text
+        nullable: true
+      user__followers_url:
+        data_type: text
+        nullable: true
+      user__following_url:
+        data_type: text
+        nullable: true
+      user__gists_url:
+        data_type: text
+        nullable: true
+      user__starred_url:
+        data_type: text
+        nullable: true
+      user__subscriptions_url:
+        data_type: text
+        nullable: true
+      user__organizations_url:
+        data_type: text
+        nullable: true
+      user__repos_url:
+        data_type: text
+        nullable: true
+      user__events_url:
+        data_type: text
+        nullable: true
+      user__received_events_url:
+        data_type: text
+        nullable: true
+      user__type:
+        data_type: text
+        nullable: true
+      user__user_view_type:
+        data_type: text
+        nullable: true
+      user__site_admin:
+        data_type: bool
+        nullable: true
+      body:
+        data_type: text
+        nullable: true
+      created_at:
+        data_type: timestamp
+        nullable: true
+      updated_at:
+        incremental: true
+        data_type: timestamp
+        nullable: true
+      merge_commit_sha:
+        data_type: text
+        nullable: true
+      draft:
+        data_type: bool
+        nullable: true
+      commits_url:
+        data_type: text
+        nullable: true
+      review_comments_url:
+        data_type: text
+        nullable: true
+      review_comment_url:
+        data_type: text
+        nullable: true
+      comments_url:
+        data_type: text
+        nullable: true
+      statuses_url:
+        data_type: text
+        nullable: true
+      head__label:
+        data_type: text
+        nullable: true
+      head__ref:
+        data_type: text
+        nullable: true
+      head__sha:
+        data_type: text
+        nullable: true
+      head__user__login:
+        data_type: text
+        nullable: true
+      head__user__id:
+        data_type: bigint
+        nullable: true
+      head__user__node_id:
+        data_type: text
+        nullable: true
+      head__user__avatar_url:
+        data_type: text
+        nullable: true
+      head__user__gravatar_id:
+        data_type: text
+        nullable: true
+      head__user__url:
+        data_type: text
+        nullable: true
+      head__user__html_url:
+        data_type: text
+        nullable: true
+      head__user__followers_url:
+        data_type: text
+        nullable: true
+      head__user__following_url:
+        data_type: text
+        nullable: true
+      head__user__gists_url:
+        data_type: text
+        nullable: true
+      head__user__starred_url:
+        data_type: text
+        nullable: true
+      head__user__subscriptions_url:
+        data_type: text
+        nullable: true
+      head__user__organizations_url:
+        data_type: text
+        nullable: true
+      head__user__repos_url:
+        data_type: text
+        nullable: true
+      head__user__events_url:
+        data_type: text
+        nullable: true
+      head__user__received_events_url:
+        data_type: text
+        nullable: true
+      head__user__type:
+        data_type: text
+        nullable: true
+      head__user__user_view_type:
+        data_type: text
+        nullable: true
+      head__user__site_admin:
+        data_type: bool
+        nullable: true
+      head__repo__id:
+        data_type: bigint
+        nullable: true
+      head__repo__node_id:
+        data_type: text
+        nullable: true
+      head__repo__name:
+        data_type: text
+        nullable: true
+      head__repo__full_name:
+        data_type: text
+        nullable: true
+      head__repo__private:
+        data_type: bool
+        nullable: true
+      head__repo__owner__login:
+        data_type: text
+        nullable: true
+      head__repo__owner__id:
+        data_type: bigint
+        nullable: true
+      head__repo__owner__node_id:
+        data_type: text
+        nullable: true
+      head__repo__owner__avatar_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__gravatar_id:
+        data_type: text
+        nullable: true
+      head__repo__owner__url:
+        data_type: text
+        nullable: true
+      head__repo__owner__html_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__followers_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__following_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__gists_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__starred_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__subscriptions_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__organizations_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__repos_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__events_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__received_events_url:
+        data_type: text
+        nullable: true
+      head__repo__owner__type:
+        data_type: text
+        nullable: true
+      head__repo__owner__user_view_type:
+        data_type: text
+        nullable: true
+      head__repo__owner__site_admin:
+        data_type: bool
+        nullable: true
+      head__repo__html_url:
+        data_type: text
+        nullable: true
+      head__repo__description:
+        data_type: text
+        nullable: true
+      head__repo__fork:
+        data_type: bool
+        nullable: true
+      head__repo__url:
+        data_type: text
+        nullable: true
+      head__repo__forks_url:
+        data_type: text
+        nullable: true
+      head__repo__keys_url:
+        data_type: text
+        nullable: true
+      head__repo__collaborators_url:
+        data_type: text
+        nullable: true
+      head__repo__teams_url:
+        data_type: text
+        nullable: true
+      head__repo__hooks_url:
+        data_type: text
+        nullable: true
+      head__repo__issue_events_url:
+        data_type: text
+        nullable: true
+      head__repo__events_url:
+        data_type: text
+        nullable: true
+      head__repo__assignees_url:
+        data_type: text
+        nullable: true
+      head__repo__branches_url:
+        data_type: text
+        nullable: true
+      head__repo__tags_url:
+        data_type: text
+        nullable: true
+      head__repo__blobs_url:
+        data_type: text
+        nullable: true
+      head__repo__git_tags_url:
+        data_type: text
+        nullable: true
+      head__repo__git_refs_url:
+        data_type: text
+        nullable: true
+      head__repo__trees_url:
+        data_type: text
+        nullable: true
+      head__repo__statuses_url:
+        data_type: text
+        nullable: true
+      head__repo__languages_url:
+        data_type: text
+        nullable: true
+      head__repo__stargazers_url:
+        data_type: text
+        nullable: true
+      head__repo__contributors_url:
+        data_type: text
+        nullable: true
+      head__repo__subscribers_url:
+        data_type: text
+        nullable: true
+      head__repo__subscription_url:
+        data_type: text
+        nullable: true
+      head__repo__commits_url:
+        data_type: text
+        nullable: true
+      head__repo__git_commits_url:
+        data_type: text
+        nullable: true
+      head__repo__comments_url:
+        data_type: text
+        nullable: true
+      head__repo__issue_comment_url:
+        data_type: text
+        nullable: true
+      head__repo__contents_url:
+        data_type: text
+        nullable: true
+      head__repo__compare_url:
+        data_type: text
+        nullable: true
+      head__repo__merges_url:
+        data_type: text
+        nullable: true
+      head__repo__archive_url:
+        data_type: text
+        nullable: true
+      head__repo__downloads_url:
+        data_type: text
+        nullable: true
+      head__repo__issues_url:
+        data_type: text
+        nullable: true
+      head__repo__pulls_url:
+        data_type: text
+        nullable: true
+      head__repo__milestones_url:
+        data_type: text
+        nullable: true
+      head__repo__notifications_url:
+        data_type: text
+        nullable: true
+      head__repo__labels_url:
+        data_type: text
+        nullable: true
+      head__repo__releases_url:
+        data_type: text
+        nullable: true
+      head__repo__deployments_url:
+        data_type: text
+        nullable: true
+      head__repo__created_at:
+        data_type: timestamp
+        nullable: true
+      head__repo__updated_at:
+        data_type: timestamp
+        nullable: true
+      head__repo__pushed_at:
+        data_type: timestamp
+        nullable: true
+      head__repo__git_url:
+        data_type: text
+        nullable: true
+      head__repo__ssh_url:
+        data_type: text
+        nullable: true
+      head__repo__clone_url:
+        data_type: text
+        nullable: true
+      head__repo__svn_url:
+        data_type: text
+        nullable: true
+      head__repo__homepage:
+        data_type: text
+        nullable: true
+      head__repo__size:
+        data_type: bigint
+        nullable: true
+      head__repo__stargazers_count:
+        data_type: bigint
+        nullable: true
+      head__repo__watchers_count:
+        data_type: bigint
+        nullable: true
+      head__repo__language:
+        data_type: text
+        nullable: true
+      head__repo__has_issues:
+        data_type: bool
+        nullable: true
+      head__repo__has_projects:
+        data_type: bool
+        nullable: true
+      head__repo__has_downloads:
+        data_type: bool
+        nullable: true
+      head__repo__has_wiki:
+        data_type: bool
+        nullable: true
+      head__repo__has_pages:
+        data_type: bool
+        nullable: true
+      head__repo__has_discussions:
+        data_type: bool
+        nullable: true
+      head__repo__forks_count:
+        data_type: bigint
+        nullable: true
+      head__repo__archived:
+        data_type: bool
+        nullable: true
+      head__repo__disabled:
+        data_type: bool
+        nullable: true
+      head__repo__open_issues_count:
+        data_type: bigint
+        nullable: true
+      head__repo__license__key:
+        data_type: text
+        nullable: true
+      head__repo__license__name:
+        data_type: text
+        nullable: true
+      head__repo__license__spdx_id:
+        data_type: text
+        nullable: true
+      head__repo__license__url:
+        data_type: text
+        nullable: true
+      head__repo__license__node_id:
+        data_type: text
+        nullable: true
+      head__repo__allow_forking:
+        data_type: bool
+        nullable: true
+      head__repo__is_template:
+        data_type: bool
+        nullable: true
+      head__repo__web_commit_signoff_required:
+        data_type: bool
+        nullable: true
+      head__repo__visibility:
+        data_type: text
+        nullable: true
+      head__repo__forks:
+        data_type: bigint
+        nullable: true
+      head__repo__open_issues:
+        data_type: bigint
+        nullable: true
+      head__repo__watchers:
+        data_type: bigint
+        nullable: true
+      head__repo__default_branch:
+        data_type: text
+        nullable: true
+      base__label:
+        data_type: text
+        nullable: true
+      base__ref:
+        data_type: text
+        nullable: true
+      base__sha:
+        data_type: text
+        nullable: true
+      base__user__login:
+        data_type: text
+        nullable: true
+      base__user__id:
+        data_type: bigint
+        nullable: true
+      base__user__node_id:
+        data_type: text
+        nullable: true
+      base__user__avatar_url:
+        data_type: text
+        nullable: true
+      base__user__gravatar_id:
+        data_type: text
+        nullable: true
+      base__user__url:
+        data_type: text
+        nullable: true
+      base__user__html_url:
+        data_type: text
+        nullable: true
+      base__user__followers_url:
+        data_type: text
+        nullable: true
+      base__user__following_url:
+        data_type: text
+        nullable: true
+      base__user__gists_url:
+        data_type: text
+        nullable: true
+      base__user__starred_url:
+        data_type: text
+        nullable: true
+      base__user__subscriptions_url:
+        data_type: text
+        nullable: true
+      base__user__organizations_url:
+        data_type: text
+        nullable: true
+      base__user__repos_url:
+        data_type: text
+        nullable: true
+      base__user__events_url:
+        data_type: text
+        nullable: true
+      base__user__received_events_url:
+        data_type: text
+        nullable: true
+      base__user__type:
+        data_type: text
+        nullable: true
+      base__user__user_view_type:
+        data_type: text
+        nullable: true
+      base__user__site_admin:
+        data_type: bool
+        nullable: true
+      base__repo__id:
+        data_type: bigint
+        nullable: true
+      base__repo__node_id:
+        data_type: text
+        nullable: true
+      base__repo__name:
+        data_type: text
+        nullable: true
+      base__repo__full_name:
+        data_type: text
+        nullable: true
+      base__repo__private:
+        data_type: bool
+        nullable: true
+      base__repo__owner__login:
+        data_type: text
+        nullable: true
+      base__repo__owner__id:
+        data_type: bigint
+        nullable: true
+      base__repo__owner__node_id:
+        data_type: text
+        nullable: true
+      base__repo__owner__avatar_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__gravatar_id:
+        data_type: text
+        nullable: true
+      base__repo__owner__url:
+        data_type: text
+        nullable: true
+      base__repo__owner__html_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__followers_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__following_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__gists_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__starred_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__subscriptions_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__organizations_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__repos_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__events_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__received_events_url:
+        data_type: text
+        nullable: true
+      base__repo__owner__type:
+        data_type: text
+        nullable: true
+      base__repo__owner__user_view_type:
+        data_type: text
+        nullable: true
+      base__repo__owner__site_admin:
+        data_type: bool
+        nullable: true
+      base__repo__html_url:
+        data_type: text
+        nullable: true
+      base__repo__description:
+        data_type: text
+        nullable: true
+      base__repo__fork:
+        data_type: bool
+        nullable: true
+      base__repo__url:
+        data_type: text
+        nullable: true
+      base__repo__forks_url:
+        data_type: text
+        nullable: true
+      base__repo__keys_url:
+        data_type: text
+        nullable: true
+      base__repo__collaborators_url:
+        data_type: text
+        nullable: true
+      base__repo__teams_url:
+        data_type: text
+        nullable: true
+      base__repo__hooks_url:
+        data_type: text
+        nullable: true
+      base__repo__issue_events_url:
+        data_type: text
+        nullable: true
+      base__repo__events_url:
+        data_type: text
+        nullable: true
+      base__repo__assignees_url:
+        data_type: text
+        nullable: true
+      base__repo__branches_url:
+        data_type: text
+        nullable: true
+      base__repo__tags_url:
+        data_type: text
+        nullable: true
+      base__repo__blobs_url:
+        data_type: text
+        nullable: true
+      base__repo__git_tags_url:
+        data_type: text
+        nullable: true
+      base__repo__git_refs_url:
+        data_type: text
+        nullable: true
+      base__repo__trees_url:
+        data_type: text
+        nullable: true
+      base__repo__statuses_url:
+        data_type: text
+        nullable: true
+      base__repo__languages_url:
+        data_type: text
+        nullable: true
+      base__repo__stargazers_url:
+        data_type: text
+        nullable: true
+      base__repo__contributors_url:
+        data_type: text
+        nullable: true
+      base__repo__subscribers_url:
+        data_type: text
+        nullable: true
+      base__repo__subscription_url:
+        data_type: text
+        nullable: true
+      base__repo__commits_url:
+        data_type: text
+        nullable: true
+      base__repo__git_commits_url:
+        data_type: text
+        nullable: true
+      base__repo__comments_url:
+        data_type: text
+        nullable: true
+      base__repo__issue_comment_url:
+        data_type: text
+        nullable: true
+      base__repo__contents_url:
+        data_type: text
+        nullable: true
+      base__repo__compare_url:
+        data_type: text
+        nullable: true
+      base__repo__merges_url:
+        data_type: text
+        nullable: true
+      base__repo__archive_url:
+        data_type: text
+        nullable: true
+      base__repo__downloads_url:
+        data_type: text
+        nullable: true
+      base__repo__issues_url:
+        data_type: text
+        nullable: true
+      base__repo__pulls_url:
+        data_type: text
+        nullable: true
+      base__repo__milestones_url:
+        data_type: text
+        nullable: true
+      base__repo__notifications_url:
+        data_type: text
+        nullable: true
+      base__repo__labels_url:
+        data_type: text
+        nullable: true
+      base__repo__releases_url:
+        data_type: text
+        nullable: true
+      base__repo__deployments_url:
+        data_type: text
+        nullable: true
+      base__repo__created_at:
+        data_type: timestamp
+        nullable: true
+      base__repo__updated_at:
+        data_type: timestamp
+        nullable: true
+      base__repo__pushed_at:
+        data_type: timestamp
+        nullable: true
+      base__repo__git_url:
+        data_type: text
+        nullable: true
+      base__repo__ssh_url:
+        data_type: text
+        nullable: true
+      base__repo__clone_url:
+        data_type: text
+        nullable: true
+      base__repo__svn_url:
+        data_type: text
+        nullable: true
+      base__repo__homepage:
+        data_type: text
+        nullable: true
+      base__repo__size:
+        data_type: bigint
+        nullable: true
+      base__repo__stargazers_count:
+        data_type: bigint
+        nullable: true
+      base__repo__watchers_count:
+        data_type: bigint
+        nullable: true
+      base__repo__language:
+        data_type: text
+        nullable: true
+      base__repo__has_issues:
+        data_type: bool
+        nullable: true
+      base__repo__has_projects:
+        data_type: bool
+        nullable: true
+      base__repo__has_downloads:
+        data_type: bool
+        nullable: true
+      base__repo__has_wiki:
+        data_type: bool
+        nullable: true
+      base__repo__has_pages:
+        data_type: bool
+        nullable: true
+      base__repo__has_discussions:
+        data_type: bool
+        nullable: true
+      base__repo__forks_count:
+        data_type: bigint
+        nullable: true
+      base__repo__archived:
+        data_type: bool
+        nullable: true
+      base__repo__disabled:
+        data_type: bool
+        nullable: true
+      base__repo__open_issues_count:
+        data_type: bigint
+        nullable: true
+      base__repo__license__key:
+        data_type: text
+        nullable: true
+      base__repo__license__name:
+        data_type: text
+        nullable: true
+      base__repo__license__spdx_id:
+        data_type: text
+        nullable: true
+      base__repo__license__url:
+        data_type: text
+        nullable: true
+      base__repo__license__node_id:
+        data_type: text
+        nullable: true
+      base__repo__allow_forking:
+        data_type: bool
+        nullable: true
+      base__repo__is_template:
+        data_type: bool
+        nullable: true
+      base__repo__web_commit_signoff_required:
+        data_type: bool
+        nullable: true
+      base__repo__visibility:
+        data_type: text
+        nullable: true
+      base__repo__forks:
+        data_type: bigint
+        nullable: true
+      base__repo__open_issues:
+        data_type: bigint
+        nullable: true
+      base__repo__watchers:
+        data_type: bigint
+        nullable: true
+      base__repo__default_branch:
+        data_type: text
+        nullable: true
+      _links__self__href:
+        data_type: text
+        nullable: true
+      _links__html__href:
+        data_type: text
+        nullable: true
+      _links__issue__href:
+        data_type: text
+        nullable: true
+      _links__comments__href:
+        data_type: text
+        nullable: true
+      _links__review_comments__href:
+        data_type: text
+        nullable: true
+      _links__review_comment__href:
+        data_type: text
+        nullable: true
+      _links__commits__href:
+        data_type: text
+        nullable: true
+      _links__statuses__href:
+        data_type: text
+        nullable: true
+      author_association:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      assignee__login:
+        data_type: text
+        nullable: true
+      assignee__id:
+        data_type: bigint
+        nullable: true
+      assignee__node_id:
+        data_type: text
+        nullable: true
+      assignee__avatar_url:
+        data_type: text
+        nullable: true
+      assignee__gravatar_id:
+        data_type: text
+        nullable: true
+      assignee__url:
+        data_type: text
+        nullable: true
+      assignee__html_url:
+        data_type: text
+        nullable: true
+      assignee__followers_url:
+        data_type: text
+        nullable: true
+      assignee__following_url:
+        data_type: text
+        nullable: true
+      assignee__gists_url:
+        data_type: text
+        nullable: true
+      assignee__starred_url:
+        data_type: text
+        nullable: true
+      assignee__subscriptions_url:
+        data_type: text
+        nullable: true
+      assignee__organizations_url:
+        data_type: text
+        nullable: true
+      assignee__repos_url:
+        data_type: text
+        nullable: true
+      assignee__events_url:
+        data_type: text
+        nullable: true
+      assignee__received_events_url:
+        data_type: text
+        nullable: true
+      assignee__type:
+        data_type: text
+        nullable: true
+      assignee__user_view_type:
+        data_type: text
+        nullable: true
+      assignee__site_admin:
+        data_type: bool
+        nullable: true
+    write_disposition: append
+    resource: github_pulls
+    x-normalizer:
+      seen-data: true
+  _dlt_pipeline_state:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      pipeline_name:
+        data_type: text
+        nullable: false
+      state:
+        data_type: text
+        nullable: false
+      created_at:
+        data_type: timestamp
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    write_disposition: append
+    file_format: preferred
+    resource: _dlt_pipeline_state
+    x-normalizer:
+      seen-data: true
+  github_pulls__head__repo__topics:
+    columns:
+      value:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: github_pulls
+    x-normalizer:
+      seen-data: true
+  github_pulls__base__repo__topics:
+    columns:
+      value:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: github_pulls
+    x-normalizer:
+      seen-data: true
+  github_pulls__labels:
+    columns:
+      id:
+        data_type: bigint
+        nullable: true
+      node_id:
+        data_type: text
+        nullable: true
+      url:
+        data_type: text
+        nullable: true
+      name:
+        data_type: text
+        nullable: true
+      color:
+        data_type: text
+        nullable: true
+      default:
+        data_type: bool
+        nullable: true
+      description:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: github_pulls
+    x-normalizer:
+      seen-data: true
+  github_pulls__assignees:
+    columns:
+      login:
+        data_type: text
+        nullable: true
+      id:
+        data_type: bigint
+        nullable: true
+      node_id:
+        data_type: text
+        nullable: true
+      avatar_url:
+        data_type: text
+        nullable: true
+      gravatar_id:
+        data_type: text
+        nullable: true
+      url:
+        data_type: text
+        nullable: true
+      html_url:
+        data_type: text
+        nullable: true
+      followers_url:
+        data_type: text
+        nullable: true
+      following_url:
+        data_type: text
+        nullable: true
+      gists_url:
+        data_type: text
+        nullable: true
+      starred_url:
+        data_type: text
+        nullable: true
+      subscriptions_url:
+        data_type: text
+        nullable: true
+      organizations_url:
+        data_type: text
+        nullable: true
+      repos_url:
+        data_type: text
+        nullable: true
+      events_url:
+        data_type: text
+        nullable: true
+      received_events_url:
+        data_type: text
+        nullable: true
+      type:
+        data_type: text
+        nullable: true
+      user_view_type:
+        data_type: text
+        nullable: true
+      site_admin:
+        data_type: bool
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: github_pulls
+    x-normalizer:
+      seen-data: true
+  github_pulls__requested_reviewers:
+    columns:
+      login:
+        data_type: text
+        nullable: true
+      id:
+        data_type: bigint
+        nullable: true
+      node_id:
+        data_type: text
+        nullable: true
+      avatar_url:
+        data_type: text
+        nullable: true
+      gravatar_id:
+        data_type: text
+        nullable: true
+      url:
+        data_type: text
+        nullable: true
+      html_url:
+        data_type: text
+        nullable: true
+      followers_url:
+        data_type: text
+        nullable: true
+      following_url:
+        data_type: text
+        nullable: true
+      gists_url:
+        data_type: text
+        nullable: true
+      starred_url:
+        data_type: text
+        nullable: true
+      subscriptions_url:
+        data_type: text
+        nullable: true
+      organizations_url:
+        data_type: text
+        nullable: true
+      repos_url:
+        data_type: text
+        nullable: true
+      events_url:
+        data_type: text
+        nullable: true
+      received_events_url:
+        data_type: text
+        nullable: true
+      type:
+        data_type: text
+        nullable: true
+      user_view_type:
+        data_type: text
+        nullable: true
+      site_admin:
+        data_type: bool
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: github_pulls
+    x-normalizer:
+      seen-data: true
+settings:
+  detections:
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_load_id
+    parent_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+    row_key:
+    - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+previous_hashes:
+- 0WLnuf3Jh1J1XsbVrV2eB824Z6heOlf5o912i1v3tho=
+- 0d1z0RFV2O0OvfEWkebtSjxrCjjiyv1lOeNiF0V8Lws=
