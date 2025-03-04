@@ -1,0 +1,1042 @@
+2025-03-04 15:24:56,932 - BVGPipeline - INFO - Starting BVG Transport Data Pipeline
+2025-03-04 15:24:57,285 - BVGPipeline - INFO - Pipeline configured: bvg_transport_data
+2025-03-04 15:24:57,285 - BVGTransportDataSource - INFO - Initialized BVG Transport Data Source
+2025-03-04 15:24:57,285 - BVGTransportDataSource - INFO - Stations to process: ['900110007', '900140011']
+2025-03-04 15:24:57,285 - BVGPipeline - ERROR - Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\Data Engg\dlt\dlt_project\script.py", line 184, in run_bvg_pipeline
+    load_info = pipeline.run(bvg_source.fetch_data())
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\decorators.py", line 199, in __call__
+    source = self._deco_f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\decorators.py", line 284, in _wrap
+    rv = conf_f(*args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BVGTransportDataSource.fetch_data() missing 1 required positional argument: 'self'
+2025-03-04 15:26:01,460 - BVGPipeline - INFO - Starting BVG Transport Data Pipeline
+2025-03-04 15:26:02,039 - BVGPipeline - INFO - Pipeline configured: bvg_transport_data
+2025-03-04 15:26:02,055 - BVGDataSource - INFO - Initializing data source with stations: ['900110007', '900140011']
+2025-03-04 15:26:02,830 - asyncio - DEBUG - Using selector: SelectSelector
+2025-03-04 15:26:02,830 - s3fs - DEBUG - Setting up s3fs instance
+2025-03-04 15:26:02,846 - botocore.hooks - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2025-03-04 15:26:02,851 - botocore.hooks - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2025-03-04 15:26:02,857 - botocore.hooks - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2025-03-04 15:26:02,860 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2025-03-04 15:26:02,862 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2025-03-04 15:26:02,867 - botocore.hooks - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2025-03-04 15:26:02,867 - botocore.hooks - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2025-03-04 15:26:02,877 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2025-03-04 15:26:02,877 - botocore.hooks - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2025-03-04 15:26:02,881 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2025-03-04 15:26:02,882 - botocore.hooks - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2025-03-04 15:26:02,884 - s3fs - DEBUG - RC: caching enabled? False (explicit option is False)
+2025-03-04 15:26:02,889 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\endpoints.json
+2025-03-04 15:26:02,933 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\sdk-default-configuration.json
+2025-03-04 15:26:02,933 - botocore.hooks - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x000002C041EB0E00>
+2025-03-04 15:26:03,062 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\service-2.json.gz
+2025-03-04 15:26:03,077 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\service-2.sdk-extras.json
+2025-03-04 15:26:03,195 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\endpoint-rule-set-1.json.gz
+2025-03-04 15:26:03,211 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\partitions.json
+2025-03-04 15:26:03,216 - botocore.hooks - DEBUG - Event creating-client-class.s3: calling handler <function add_generate_presigned_post at 0x000002C0421FF740>
+2025-03-04 15:26:03,219 - botocore.hooks - DEBUG - Event creating-client-class.s3: calling handler <function add_generate_presigned_url at 0x000002C0421FF4C0>
+2025-03-04 15:26:03,220 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: environment_service
+2025-03-04 15:26:03,221 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: environment_global
+2025-03-04 15:26:03,223 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: config_service
+2025-03-04 15:26:03,223 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: config_global
+2025-03-04 15:26:03,225 - botocore.configprovider - DEBUG - No configured endpoint found.
+2025-03-04 15:26:03,229 - botocore.endpoint - DEBUG - Setting s3 timeout as (5, 15)
+2025-03-04 15:26:03,235 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\_retry.json
+2025-03-04 15:26:03,237 - botocore.client - DEBUG - Registering retry handlers for service: s3
+2025-03-04 15:26:03,238 - botocore.utils - DEBUG - Registering S3 region redirector handler
+2025-03-04 15:26:03,241 - botocore.utils - DEBUG - Registering S3Express Identity Resolver
+2025-03-04 15:26:03,242 - s3fs - DEBUG - CALL: head_object - ({},) - {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/_dlt_pipeline_state/init'}
+2025-03-04 15:26:03,243 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function sse_md5 at 0x000002C041ECBA60>
+2025-03-04 15:26:03,244 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function validate_bucket_name at 0x000002C041ECB9C0>
+2025-03-04 15:26:03,245 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function remove_bucket_from_url_paths_from_model at 0x000002C041EF5BC0>
+2025-03-04 15:26:03,247 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:03,248 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:03,250 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function generate_idempotent_uuid at 0x000002C041ECB7E0>
+2025-03-04 15:26:03,252 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function _handle_request_validation_mode_member at 0x000002C041EF6340>
+2025-03-04 15:26:03,254 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000002C041EF5DA0>
+2025-03-04 15:26:03,256 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:03,256 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'us-east-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Key': 'berlin_transport_data/_dlt_pipeline_state/init', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:26:03,260 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.amazonaws.com
+2025-03-04 15:26:03,261 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:26:03,261 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:26:03,263 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_expect_header at 0x000002C041ECBD80>
+2025-03-04 15:26:03,264 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:03,267 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_recursion_detection_header at 0x000002C041EC9F80>
+2025-03-04 15:26:03,267 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_query_compatibility_header at 0x000002C041EF62A0>
+2025-03-04 15:26:03,269 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function inject_api_version_header_if_needed at 0x000002C041EF5300>
+2025-03-04 15:26:03,271 - botocore.endpoint - DEBUG - Making request for OperationModel(name=HeadObject) with params: {'url_path': '/berlin_transport_data/_dlt_pipeline_state/init', 'query_string': {}, 'method': 'HEAD', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/berlin_transport_data/_dlt_pipeline_state/init', 'url': 'https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x000002C043EECFE0>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/_dlt_pipeline_state/init'}}, 'input_params': {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/_dlt_pipeline_state/init'}, 'signing': {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'us-east-1'}]}}}
+2025-03-04 15:26:03,271 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x000002C043EECEF0>>
+2025-03-04 15:26:03,271 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:03,278 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <function set_operation_specific_signer at 0x000002C041ECB600>
+2025-03-04 15:26:03,280 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function remove_arn_from_signing_path at 0x000002C041EF5D00>
+2025-03-04 15:26:03,281 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function _set_extra_headers_for_unsigned_request at 0x000002C041EF63E0>
+2025-03-04 15:26:03,282 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:03,285 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:26:03,285 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/berlin_transport_data/_dlt_pipeline_state/init
+
+host:bvg-open-data.s3.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T142603Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:26:03,290 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T142603Z
+20250304/us-east-1/s3/aws4_request
+00b32952b6a098bc4497fbc27f1df2956327060e49e6fce882fe73825b1f9ccd
+2025-03-04 15:26:03,290 - botocore.auth - DEBUG - Signature:
+ba6090cc1a080c64b31d8d263f9eb13d92498187c4c0252a4446bdbd7300f25e
+2025-03-04 15:26:03,295 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <function add_retry_headers at 0x000002C041EF5B20>
+2025-03-04 15:26:03,296 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T142603Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=ba6090cc1a080c64b31d8d263f9eb13d92498187c4c0252a4446bdbd7300f25e', 'amz-sdk-invocation-id': b'755fb267-ba2b-4563-8ada-06955477998d', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:26:03,302 - botocore.httpsession - DEBUG - Certificate path: C:\Python312\Lib\site-packages\certifi\cacert.pem
+2025-03-04 15:26:04,107 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function _handle_200_error at 0x000002C041EF60C0>
+2025-03-04 15:26:04,107 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function handle_expires_header at 0x000002C041EF5EE0>
+2025-03-04 15:26:04,107 - botocore.parsers - DEBUG - Response headers: {'x-amz-request-id': 'KMXBAHJZPKEAY2HN', 'x-amz-id-2': '1/9JO8ez87YZXtSLKB8ThOxtHGqfKMDZs+9c3vI4Df8JHskU93zD26H1VMeKsvGp15jApP3hI58=', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:26:03 GMT', 'connection': 'close', 'server': 'AmazonS3'}
+2025-03-04 15:26:04,107 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:26:04,126 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <function _update_status_code at 0x000002C041EF6200>
+2025-03-04 15:26:04,126 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000002C04209D070>
+2025-03-04 15:26:04,126 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:26:04,129 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,132 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function validate_bucket_name at 0x000002C041ECB9C0>
+2025-03-04 15:26:04,133 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function remove_bucket_from_url_paths_from_model at 0x000002C041EF5BC0>
+2025-03-04 15:26:04,134 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,136 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:04,137 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function generate_idempotent_uuid at 0x000002C041ECB7E0>
+2025-03-04 15:26:04,138 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function _handle_request_validation_mode_member at 0x000002C041EF6340>
+2025-03-04 15:26:04,140 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000002C041EF5DA0>
+2025-03-04 15:26:04,140 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,140 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'us-east-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:26:04,146 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.amazonaws.com
+2025-03-04 15:26:04,147 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:26:04,148 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:26:04,150 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_expect_header at 0x000002C041ECBD80>
+2025-03-04 15:26:04,151 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:04,153 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_recursion_detection_header at 0x000002C041EC9F80>
+2025-03-04 15:26:04,155 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_query_compatibility_header at 0x000002C041EF62A0>
+2025-03-04 15:26:04,156 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function inject_api_version_header_if_needed at 0x000002C041EF5300>
+2025-03-04 15:26:04,158 - botocore.endpoint - DEBUG - Making request for OperationModel(name=HeadBucket) with params: {'url_path': '', 'query_string': {}, 'method': 'HEAD', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/', 'url': 'https://bvg-open-data.s3.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x000002C043EECFE0>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data'}}, 'input_params': {'Bucket': 'bvg-open-data'}, 'signing': {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'us-east-1'}]}}}
+2025-03-04 15:26:04,161 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x000002C043EECEF0>>
+2025-03-04 15:26:04,162 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:04,164 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <function set_operation_specific_signer at 0x000002C041ECB600>
+2025-03-04 15:26:04,165 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function remove_arn_from_signing_path at 0x000002C041EF5D00>
+2025-03-04 15:26:04,167 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function _set_extra_headers_for_unsigned_request at 0x000002C041EF63E0>
+2025-03-04 15:26:04,168 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:04,170 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:26:04,171 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/
+
+host:bvg-open-data.s3.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T142604Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:26:04,174 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T142604Z
+20250304/us-east-1/s3/aws4_request
+0284a3691694d2062a9da79cd48191a0c30bf438a3ca420a1a0eb8377d2a48e8
+2025-03-04 15:26:04,178 - botocore.auth - DEBUG - Signature:
+11e74de39b0919c180248482c229f708bfd15990ea9663570d3057aae586c3e1
+2025-03-04 15:26:04,180 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <function add_retry_headers at 0x000002C041EF5B20>
+2025-03-04 15:26:04,181 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.amazonaws.com/, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T142604Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=11e74de39b0919c180248482c229f708bfd15990ea9663570d3057aae586c3e1', 'amz-sdk-invocation-id': b'c8cdb339-5bac-49a2-83a6-57f9d4a74868', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:26:04,258 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function _handle_200_error at 0x000002C041EF60C0>
+2025-03-04 15:26:04,258 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function handle_expires_header at 0x000002C041EF5EE0>
+2025-03-04 15:26:04,259 - botocore.parsers - DEBUG - Response headers: {'x-amz-bucket-region': 'eu-central-1', 'x-amz-request-id': 'KMXA3C0R90VG5023', 'x-amz-id-2': 'RkzHuF5thS8G8HE2LHvkys5eynJrb8MtcwuHWRiZQcMyfS6QPEmdVijvAu5RThtF8boqVC5pSZQ=', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:26:04 GMT', 'connection': 'close', 'server': 'AmazonS3'}
+2025-03-04 15:26:04,261 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:26:04,262 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <function _update_status_code at 0x000002C041EF6200>
+2025-03-04 15:26:04,263 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000002C04209D070>
+2025-03-04 15:26:04,264 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:26:04,264 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,266 - aiobotocore.utils - DEBUG - S3 client configured for region us-east-1 but the bucket bvg-open-data is in region eu-central-1; Please configure the proper region to avoid multiple unnecessary redirects and signing attempts.
+2025-03-04 15:26:04,267 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000002C041EF5DA0>
+2025-03-04 15:26:04,268 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,269 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:26:04,271 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:26:04,272 - botocore.utils - DEBUG - Updating URI from https://bvg-open-data.s3.amazonaws.com/ to https://bvg-open-data.s3.eu-central-1.amazonaws.com/
+2025-03-04 15:26:04,273 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:26:04,274 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:26:04,275 - botocore.endpoint - DEBUG - Response received to retry, sleeping for 0 seconds
+2025-03-04 15:26:04,298 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x000002C043EECEF0>>
+2025-03-04 15:26:04,299 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:04,300 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <function set_operation_specific_signer at 0x000002C041ECB600>
+2025-03-04 15:26:04,301 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function remove_arn_from_signing_path at 0x000002C041EF5D00>
+2025-03-04 15:26:04,302 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function _set_extra_headers_for_unsigned_request at 0x000002C041EF63E0>
+2025-03-04 15:26:04,303 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:04,306 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:26:04,307 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/
+
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T142604Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:26:04,311 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T142604Z
+20250304/eu-central-1/s3/aws4_request
+4602c002957049ffb21e8d283d26c0dbe62385245fc84ceb2c89fe4efa91901c
+2025-03-04 15:26:04,314 - botocore.auth - DEBUG - Signature:
+b319ca9f76bbdc5d908fbada3de201e12ac56ac4f7e3060c0b581190498650dc
+2025-03-04 15:26:04,315 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <function add_retry_headers at 0x000002C041EF5B20>
+2025-03-04 15:26:04,316 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T142604Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b319ca9f76bbdc5d908fbada3de201e12ac56ac4f7e3060c0b581190498650dc', 'amz-sdk-invocation-id': b'c8cdb339-5bac-49a2-83a6-57f9d4a74868', 'amz-sdk-request': b'ttl=20250304T142619Z; attempt=2; max=5'}>
+2025-03-04 15:26:04,428 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function _handle_200_error at 0x000002C041EF60C0>
+2025-03-04 15:26:04,428 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function handle_expires_header at 0x000002C041EF5EE0>
+2025-03-04 15:26:04,428 - botocore.parsers - DEBUG - Response headers: {'x-amz-id-2': 'UofTiTkMaJAp0GiiXQgMBbjSCzSxYH7Q1Y6Pb6mC59492nIyOCtqV/NI8KUDRe0aakHcZLpi0xPQtDF4FKeq4fgyA7vPeSywzYOOEhQiPvY=', 'x-amz-request-id': 'KMXBD8F7CCQSSAGY', 'date': 'Tue, 04 Mar 2025 14:26:05 GMT', 'x-amz-bucket-region': 'eu-central-1', 'x-amz-access-point-alias': 'false', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'server': 'AmazonS3'}
+2025-03-04 15:26:04,428 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:26:04,442 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <function _update_status_code at 0x000002C041EF6200>
+2025-03-04 15:26:04,443 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000002C04209D070>
+2025-03-04 15:26:04,446 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:26:04,448 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,449 - aiobotocore.utils - DEBUG - S3 request was previously redirected, not redirecting.
+2025-03-04 15:26:04,453 - aiobotocore.utils - DEBUG - S3 client configured for region us-east-1 but the bucket bvg-open-data is in region eu-central-1; Please configure the proper region to avoid multiple unnecessary redirects and signing attempts.
+2025-03-04 15:26:04,456 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000002C041EF5DA0>
+2025-03-04 15:26:04,457 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,458 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Key': 'berlin_transport_data/_dlt_pipeline_state/init', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:26:04,461 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:26:04,463 - botocore.utils - DEBUG - Updating URI from https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init to https://bvg-open-data.s3.eu-central-1.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init
+2025-03-04 15:26:04,464 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:26:04,465 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:26:04,467 - botocore.endpoint - DEBUG - Response received to retry, sleeping for 0 seconds
+2025-03-04 15:26:04,468 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x000002C043EECEF0>>
+2025-03-04 15:26:04,469 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:04,470 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <function set_operation_specific_signer at 0x000002C041ECB600>
+2025-03-04 15:26:04,471 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function remove_arn_from_signing_path at 0x000002C041EF5D00>
+2025-03-04 15:26:04,471 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function _set_extra_headers_for_unsigned_request at 0x000002C041EF63E0>
+2025-03-04 15:26:04,471 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:04,471 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:26:04,471 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/berlin_transport_data/_dlt_pipeline_state/init
+
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T142604Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:26:04,478 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T142604Z
+20250304/eu-central-1/s3/aws4_request
+d4f888c73879916171a2ba7d4dee5e69d1a51ce94de0424ee17232328d984019
+2025-03-04 15:26:04,478 - botocore.auth - DEBUG - Signature:
+b572401e5a6cc3908a14bdfc8e39e715a7de94bdf9d8efb8d5c2d2df58b6fd2e
+2025-03-04 15:26:04,478 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <function add_retry_headers at 0x000002C041EF5B20>
+2025-03-04 15:26:04,478 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T142604Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b572401e5a6cc3908a14bdfc8e39e715a7de94bdf9d8efb8d5c2d2df58b6fd2e', 'amz-sdk-invocation-id': b'755fb267-ba2b-4563-8ada-06955477998d', 'amz-sdk-request': b'ttl=20250304T142618Z; attempt=2; max=5'}>
+2025-03-04 15:26:04,520 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function _handle_200_error at 0x000002C041EF60C0>
+2025-03-04 15:26:04,521 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function handle_expires_header at 0x000002C041EF5EE0>
+2025-03-04 15:26:04,522 - botocore.parsers - DEBUG - Response headers: {'x-amz-request-id': 'KMXBCBMB9WWDQ85B', 'x-amz-id-2': '/Yzui7D/nivZOcYmhEsx9zlmodhz2IG9mNrwncpXX6Wsc3Mb+Pe99+CdVc9ue4yL1FSWfCLAdHRBhICxF0QQZpB53ECWA5NHwRUiHhSYJpc=', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:26:03 GMT', 'server': 'AmazonS3'}
+2025-03-04 15:26:04,524 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:26:04,525 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <function _update_status_code at 0x000002C041EF6200>
+2025-03-04 15:26:04,527 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000002C04209D070>
+2025-03-04 15:26:04,528 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:26:04,528 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,528 - aiobotocore.utils - DEBUG - S3 request was previously redirected, not redirecting.
+2025-03-04 15:26:04,533 - s3fs - DEBUG - Client error (maybe retryable): An error occurred (404) when calling the HeadObject operation: Not Found
+2025-03-04 15:26:04,535 - s3fs - DEBUG - CALL: list_objects_v2 - ({},) - {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'Delimiter': '/', 'MaxKeys': 1}
+2025-03-04 15:26:04,537 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function set_list_objects_encoding_type_url at 0x000002C041EF4EA0>
+2025-03-04 15:26:04,538 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function validate_bucket_name at 0x000002C041ECB9C0>
+2025-03-04 15:26:04,538 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function remove_bucket_from_url_paths_from_model at 0x000002C041EF5BC0>
+2025-03-04 15:26:04,538 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,538 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:04,538 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function generate_idempotent_uuid at 0x000002C041ECB7E0>
+2025-03-04 15:26:04,544 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function _handle_request_validation_mode_member at 0x000002C041EF6340>
+2025-03-04 15:26:04,545 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000002C041EF5DA0>
+2025-03-04 15:26:04,545 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,545 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:26:04,545 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:26:04,553 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:26:04,554 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:26:04,556 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_expect_header at 0x000002C041ECBD80>
+2025-03-04 15:26:04,557 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:04,558 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_recursion_detection_header at 0x000002C041EC9F80>
+2025-03-04 15:26:04,558 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_query_compatibility_header at 0x000002C041EF62A0>
+2025-03-04 15:26:04,560 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function inject_api_version_header_if_needed at 0x000002C041EF5300>
+2025-03-04 15:26:04,562 - botocore.endpoint - DEBUG - Making request for OperationModel(name=ListObjectsV2) with params: {'url_path': '?list-type=2', 'query_string': {'prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'delimiter': '/', 'max-keys': 1, 'encoding-type': 'url'}, 'method': 'GET', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/', 'url': 'https://bvg-open-data.s3.eu-central-1.amazonaws.com/?list-type=2&prefix=berlin_transport_data%2F_dlt_pipeline_state%2Finit%2F&delimiter=%2F&max-keys=1&encoding-type=url', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x000002C043EECFE0>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 'encoding_type_auto_set': True, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'Delimiter': '/', 'MaxKeys': 1, 'EncodingType': 'url'}}, 'input_params': {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/'}, 'signing': {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'eu-central-1'}]}}}
+2025-03-04 15:26:04,569 - botocore.hooks - DEBUG - Event request-created.s3.ListObjectsV2: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x000002C043EECEF0>>
+2025-03-04 15:26:04,571 - botocore.hooks - DEBUG - Event choose-signer.s3.ListObjectsV2: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x000002C043C573B0>>
+2025-03-04 15:26:04,572 - botocore.hooks - DEBUG - Event choose-signer.s3.ListObjectsV2: calling handler <function set_operation_specific_signer at 0x000002C041ECB600>
+2025-03-04 15:26:04,573 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <function remove_arn_from_signing_path at 0x000002C041EF5D00>
+2025-03-04 15:26:04,574 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <function _set_extra_headers_for_unsigned_request at 0x000002C041EF63E0>
+2025-03-04 15:26:04,575 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000002C043F27C20>>
+2025-03-04 15:26:04,577 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:26:04,578 - botocore.auth - DEBUG - CanonicalRequest:
+GET
+/
+delimiter=%2F&encoding-type=url&list-type=2&max-keys=1&prefix=berlin_transport_data%2F_dlt_pipeline_state%2Finit%2F
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T142604Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:26:04,583 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T142604Z
+20250304/eu-central-1/s3/aws4_request
+21d479d059a955c55bfdfec3819cd9ba7d5571e76141e3ba533047c82a38b2dd
+2025-03-04 15:26:04,585 - botocore.auth - DEBUG - Signature:
+5043c9d658e372f513d65c69f7df645e9776e6c1831336983e4b1b509b5bf4e7
+2025-03-04 15:26:04,586 - botocore.hooks - DEBUG - Event request-created.s3.ListObjectsV2: calling handler <function add_retry_headers at 0x000002C041EF5B20>
+2025-03-04 15:26:04,587 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=GET, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/?list-type=2&prefix=berlin_transport_data%2F_dlt_pipeline_state%2Finit%2F&delimiter=%2F&max-keys=1&encoding-type=url, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T142604Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=5043c9d658e372f513d65c69f7df645e9776e6c1831336983e4b1b509b5bf4e7', 'amz-sdk-invocation-id': b'e86b4249-eab6-43f9-bc85-2f2c56b59b70', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:26:04,624 - botocore.hooks - DEBUG - Event before-parse.s3.ListObjectsV2: calling handler <function _handle_200_error at 0x000002C041EF60C0>
+2025-03-04 15:26:04,627 - botocore.hooks - DEBUG - Event before-parse.s3.ListObjectsV2: calling handler <function handle_expires_header at 0x000002C041EF5EE0>
+2025-03-04 15:26:04,628 - botocore.parsers - DEBUG - Response headers: {'x-amz-id-2': 'yKoIFJ2cjKbM7WvAmVjTBKrRKeUK+PBQoTcNW1g3TVfb5l4SegUppAPlItNAQs3v1xP/hAgWkJ5ZO+U+Iv9+tOEXXuDYT2N/GnCgAHTT0tU=', 'x-amz-request-id': 'KMX0VFQCDFK991SA', 'date': 'Tue, 04 Mar 2025 14:26:05 GMT', 'x-amz-bucket-region': 'eu-central-1', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'server': 'AmazonS3'}
+2025-03-04 15:26:04,628 - botocore.parsers - DEBUG - Response body:
+b'<?xml version="1.0" encoding="UTF-8"?>\n<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bvg-open-data</Name><Prefix>berlin_transport_data/_dlt_pipeline_state/init/</Prefix><KeyCount>0</KeyCount><MaxKeys>1</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated></ListBucketResult>'
+2025-03-04 15:26:04,633 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <function _update_status_code at 0x000002C041EF6200>
+2025-03-04 15:26:04,634 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000002C04209D070>
+2025-03-04 15:26:04,635 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:26:04,636 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x000002C043F27650>>
+2025-03-04 15:26:04,636 - botocore.hooks - DEBUG - Event after-call.s3.ListObjectsV2: calling handler <function decode_list_object_v2 at 0x000002C041EF4FE0>
+2025-03-04 15:26:04,728 - Departures - INFO - Starting departure data collection
+2025-03-04 15:26:04,728 - Departures - DEBUG - Fetching departures for station 900110007
+2025-03-04 15:26:04,746 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): v6.bvg.transport.rest:443
+2025-03-04 15:26:05,579 - urllib3.connectionpool - DEBUG - https://v6.bvg.transport.rest:443 "GET /stops/900110007/departures?duration=30&results=50 HTTP/1.1" 200 None
+2025-03-04 15:26:05,579 - Departures - INFO - Retrieved 23 departures for station 900110007
+2025-03-04 15:26:05,602 - Arrivals - INFO - Starting arrival data collection
+2025-03-04 15:26:05,603 - Arrivals - DEBUG - Fetching arrivals for station 900110007
+2025-03-04 15:26:05,741 - urllib3.connectionpool - DEBUG - https://v6.bvg.transport.rest:443 "GET /stops/900110007/arrivals?duration=30&results=50 HTTP/1.1" 200 None
+2025-03-04 15:26:05,741 - Arrivals - INFO - Retrieved 23 arrivals for station 900110007
+2025-03-04 15:26:05,757 - Departures - DEBUG - Fetching departures for station 900140011
+2025-03-04 15:26:05,890 - urllib3.connectionpool - DEBUG - https://v6.bvg.transport.rest:443 "GET /stops/900140011/departures?duration=30&results=50 HTTP/1.1" 200 None
+2025-03-04 15:26:05,905 - Departures - INFO - Retrieved 31 departures for station 900140011
+2025-03-04 15:26:05,905 - Arrivals - DEBUG - Fetching arrivals for station 900140011
+2025-03-04 15:26:06,057 - urllib3.connectionpool - DEBUG - https://v6.bvg.transport.rest:443 "GET /stops/900140011/arrivals?duration=30&results=50 HTTP/1.1" 200 None
+2025-03-04 15:26:06,057 - Arrivals - INFO - Retrieved 31 arrivals for station 900140011
+2025-03-04 15:26:06,057 - Departures - INFO - Completed departure data collection
+2025-03-04 15:26:06,057 - Arrivals - INFO - Completed arrival data collection
+2025-03-04 15:26:06,192 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): telemetry.scalevector.ai:443
+2025-03-04 15:26:06,639 - BVGPipeline - ERROR - Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 550, in normalize
+    runner.run_pool(normalize_step.config, normalize_step)
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\common\runners\pool_runner.py", line 91, in run_pool
+    while _run_func():
+          ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\common\runners\pool_runner.py", line 84, in _run_func
+    run_metrics = run_f.run(cast(TExecutor, pool))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\normalize\normalize.py", line 280, in run
+    self.spool_schema_files(load_id, schema, schema_files)
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\normalize\normalize.py", line 234, in spool_schema_files
+    self.spool_files(load_id, schema.clone(update_normalizers=True), map_f, files)
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\normalize\normalize.py", line 178, in spool_files
+    verify_normalized_table(schema, table, self.config.destination_capabilities)
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\normalize\validate.py", line 46, in verify_normalized_table
+    raise exc
+dlt.common.schema.exceptions.UnboundColumnException: In schema: fetch_bvg_transport_data: The column time in table arrivals did not receive any data during this load. It is marked as non-nullable primary key and it must have values. This can happen if you specify the column manually, for example using the 'merge_key', 'primary_key' or 'columns' argument but it does not exist in the data.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\Data Engg\dlt\dlt_project\script.py", line 175, in run_bvg_pipeline
+    load_info = pipeline.run(fetch_bvg_transport_data())
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 223, in _wrap
+    step_info = f(self, *args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 743, in run
+    self.normalize(loader_file_format=loader_file_format)
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 223, in _wrap
+    step_info = f(self, *args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 177, in _wrap
+    rv = f(self, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 554, in normalize
+    raise PipelineStepFailed(
+dlt.pipeline.exceptions.PipelineStepFailed: Pipeline execution failed at stage normalize when processing package 1741098364.7182312 with exception:
+
+<class 'dlt.common.schema.exceptions.UnboundColumnException'>
+In schema: fetch_bvg_transport_data: The column time in table arrivals did not receive any data during this load. It is marked as non-nullable primary key and it must have values. This can happen if you specify the column manually, for example using the 'merge_key', 'primary_key' or 'columns' argument but it does not exist in the data.
+2025-03-04 15:26:07,119 - urllib3.connectionpool - DEBUG - https://telemetry.scalevector.ai:443 "POST / HTTP/1.1" 204 0
+2025-03-04 15:26:07,161 - urllib3.connectionpool - DEBUG - https://telemetry.scalevector.ai:443 "POST / HTTP/1.1" 204 0
+2025-03-04 15:26:07,218 - urllib3.connectionpool - DEBUG - https://telemetry.scalevector.ai:443 "POST / HTTP/1.1" 204 0
+2025-03-04 15:26:07,228 - asyncio - DEBUG - Using proactor: IocpProactor
+2025-03-04 15:44:00,054 - BVGPipeline - INFO - Starting BVG Transport Data Pipeline
+2025-03-04 15:44:02,106 - BVGPipeline - ERROR - Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\Data Engg\dlt\dlt_project\run_pipeline.py", line 191, in run_bvg_pipeline
+    BVGTransportDataSource.fetch_data()
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\decorators.py", line 199, in __call__
+    source = self._deco_f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\decorators.py", line 284, in _wrap
+    rv = conf_f(*args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\common\configuration\inject.py", line 259, in _wrap
+    return f(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BVGTransportDataSource.fetch_data() missing 1 required positional argument: 'cls'
+2025-03-04 15:51:40,676 - BVGPipeline - INFO - Starting BVG Transport Data Pipeline
+2025-03-04 15:51:40,974 - BVGTransportDataFetch - INFO - Initialized BVG Transport Data Fetcher
+2025-03-04 15:51:40,974 - BVGTransportDataFetch - INFO - Stations to process: ['900110007', '900140011']
+2025-03-04 15:51:40,974 - BVGTransportDataSource - INFO - Initialized BVG Transport Data Source
+2025-03-04 15:51:41,604 - asyncio - DEBUG - Using selector: SelectSelector
+2025-03-04 15:51:41,619 - s3fs - DEBUG - Setting up s3fs instance
+2025-03-04 15:51:41,619 - botocore.hooks - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2025-03-04 15:51:41,626 - botocore.hooks - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2025-03-04 15:51:41,627 - botocore.hooks - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2025-03-04 15:51:41,629 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2025-03-04 15:51:41,629 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2025-03-04 15:51:41,632 - botocore.hooks - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2025-03-04 15:51:41,633 - botocore.hooks - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2025-03-04 15:51:41,636 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2025-03-04 15:51:41,637 - botocore.hooks - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2025-03-04 15:51:41,638 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2025-03-04 15:51:41,639 - botocore.hooks - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2025-03-04 15:51:41,640 - s3fs - DEBUG - RC: caching enabled? False (explicit option is False)
+2025-03-04 15:51:41,654 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\endpoints.json
+2025-03-04 15:51:41,686 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\sdk-default-configuration.json
+2025-03-04 15:51:41,686 - botocore.hooks - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x000001478ECF59E0>
+2025-03-04 15:51:41,797 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\service-2.json.gz
+2025-03-04 15:51:41,815 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\service-2.sdk-extras.json
+2025-03-04 15:51:41,908 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\endpoint-rule-set-1.json.gz
+2025-03-04 15:51:41,923 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\partitions.json
+2025-03-04 15:51:41,926 - botocore.hooks - DEBUG - Event creating-client-class.s3: calling handler <function add_generate_presigned_post at 0x000001478F048360>
+2025-03-04 15:51:41,926 - botocore.hooks - DEBUG - Event creating-client-class.s3: calling handler <function add_generate_presigned_url at 0x000001478F0480E0>
+2025-03-04 15:51:41,927 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: environment_service
+2025-03-04 15:51:41,927 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: environment_global
+2025-03-04 15:51:41,928 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: config_service
+2025-03-04 15:51:41,929 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: config_global
+2025-03-04 15:51:41,929 - botocore.configprovider - DEBUG - No configured endpoint found.
+2025-03-04 15:51:41,933 - botocore.endpoint - DEBUG - Setting s3 timeout as (5, 15)
+2025-03-04 15:51:41,953 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\_retry.json
+2025-03-04 15:51:41,960 - botocore.client - DEBUG - Registering retry handlers for service: s3
+2025-03-04 15:51:41,962 - botocore.utils - DEBUG - Registering S3 region redirector handler
+2025-03-04 15:51:41,964 - botocore.utils - DEBUG - Registering S3Express Identity Resolver
+2025-03-04 15:51:41,965 - s3fs - DEBUG - CALL: head_object - ({},) - {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/_dlt_pipeline_state/init'}
+2025-03-04 15:51:41,966 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function sse_md5 at 0x000001478ED40680>
+2025-03-04 15:51:41,966 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function validate_bucket_name at 0x000001478ED405E0>
+2025-03-04 15:51:41,967 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function remove_bucket_from_url_paths_from_model at 0x000001478ED427A0>
+2025-03-04 15:51:41,967 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:41,967 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:41,968 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function generate_idempotent_uuid at 0x000001478ED40400>
+2025-03-04 15:51:41,968 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function _handle_request_validation_mode_member at 0x000001478ED42F20>
+2025-03-04 15:51:41,968 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:41,968 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:41,968 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'us-east-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Key': 'berlin_transport_data/_dlt_pipeline_state/init', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:41,973 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.amazonaws.com
+2025-03-04 15:51:41,974 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:41,974 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:41,976 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_expect_header at 0x000001478ED409A0>
+2025-03-04 15:51:41,977 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:41,978 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_recursion_detection_header at 0x000001478ED1AB60>
+2025-03-04 15:51:41,979 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_query_compatibility_header at 0x000001478ED42E80>
+2025-03-04 15:51:41,980 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function inject_api_version_header_if_needed at 0x000001478ED41EE0>
+2025-03-04 15:51:41,980 - botocore.endpoint - DEBUG - Making request for OperationModel(name=HeadObject) with params: {'url_path': '/berlin_transport_data/_dlt_pipeline_state/init', 'query_string': {}, 'method': 'HEAD', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/berlin_transport_data/_dlt_pipeline_state/init', 'url': 'https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x0000014790D33290>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/_dlt_pipeline_state/init'}}, 'input_params': {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/_dlt_pipeline_state/init'}, 'signing': {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'us-east-1'}]}}}
+2025-03-04 15:51:41,983 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014790D333E0>>
+2025-03-04 15:51:41,984 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:41,986 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:41,986 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:41,987 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:41,988 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:41,989 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:41,989 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/berlin_transport_data/_dlt_pipeline_state/init
+
+host:bvg-open-data.s3.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145141Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:41,991 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145141Z
+20250304/us-east-1/s3/aws4_request
+719052ddd458d44dbd3d1cb01f32ce16aff6b6d1270344741b52c98abe994065
+2025-03-04 15:51:41,992 - botocore.auth - DEBUG - Signature:
+3a8a3566adbb9cc9af45fd33cc8c18a4c989f200464d15e6637bbc7507cb6dba
+2025-03-04 15:51:41,992 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:41,993 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145141Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=3a8a3566adbb9cc9af45fd33cc8c18a4c989f200464d15e6637bbc7507cb6dba', 'amz-sdk-invocation-id': b'b631288c-ef5b-4ed4-8034-ca78496a7907', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:51:41,997 - botocore.httpsession - DEBUG - Certificate path: C:\Python312\Lib\site-packages\certifi\cacert.pem
+2025-03-04 15:51:42,654 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:42,669 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:42,669 - botocore.parsers - DEBUG - Response headers: {'x-amz-request-id': 'KQT46N2KA5AJMBW6', 'x-amz-id-2': 'JSnTopd5cjFV+mDO51/beh7v4n23LR9s+uaeobmIVL08zan1LOQetymah5fYE05Ds9nyLoqSccY=', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:51:42 GMT', 'connection': 'close', 'server': 'AmazonS3'}
+2025-03-04 15:51:42,669 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:42,690 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:42,692 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x0000014790D69EE0>
+2025-03-04 15:51:42,694 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:42,695 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,697 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function validate_bucket_name at 0x000001478ED405E0>
+2025-03-04 15:51:42,697 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function remove_bucket_from_url_paths_from_model at 0x000001478ED427A0>
+2025-03-04 15:51:42,699 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,700 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:42,701 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function generate_idempotent_uuid at 0x000001478ED40400>
+2025-03-04 15:51:42,702 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function _handle_request_validation_mode_member at 0x000001478ED42F20>
+2025-03-04 15:51:42,703 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:42,704 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,705 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'us-east-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:42,705 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.amazonaws.com
+2025-03-04 15:51:42,705 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:42,705 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:42,708 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_expect_header at 0x000001478ED409A0>
+2025-03-04 15:51:42,709 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:42,709 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_recursion_detection_header at 0x000001478ED1AB60>
+2025-03-04 15:51:42,710 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_query_compatibility_header at 0x000001478ED42E80>
+2025-03-04 15:51:42,710 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function inject_api_version_header_if_needed at 0x000001478ED41EE0>
+2025-03-04 15:51:42,711 - botocore.endpoint - DEBUG - Making request for OperationModel(name=HeadBucket) with params: {'url_path': '', 'query_string': {}, 'method': 'HEAD', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/', 'url': 'https://bvg-open-data.s3.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x0000014790D33290>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data'}}, 'input_params': {'Bucket': 'bvg-open-data'}, 'signing': {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'us-east-1'}]}}}
+2025-03-04 15:51:42,713 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014790D333E0>>
+2025-03-04 15:51:42,713 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:42,713 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:42,713 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:42,713 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:42,713 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:42,713 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:42,718 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/
+
+host:bvg-open-data.s3.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145142Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:42,720 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145142Z
+20250304/us-east-1/s3/aws4_request
+8704cabf733e94a4e0f53d187875062631080abe48702dabc7700dfaec1c1fc7
+2025-03-04 15:51:42,721 - botocore.auth - DEBUG - Signature:
+89eb08dd0f3b7853803e5f5ce10ef9a5cd167cd2c209904dfe492370cb0991cb
+2025-03-04 15:51:42,721 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:42,722 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.amazonaws.com/, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145142Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=89eb08dd0f3b7853803e5f5ce10ef9a5cd167cd2c209904dfe492370cb0991cb', 'amz-sdk-invocation-id': b'66eb86fc-5fdb-45f5-a1b7-5c885833d77c', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:51:42,793 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:42,795 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:42,795 - botocore.parsers - DEBUG - Response headers: {'x-amz-bucket-region': 'eu-central-1', 'x-amz-request-id': 'KQT8HMGXBM243TM3', 'x-amz-id-2': 'lRSAtvjE1z8FEic34Y0j12NZvx1ZvNmNC0OjXStg9OoryKUy00XcyBwPtjdBvpyVWvYF8Ql0QgsXJwzzTZDcFO6m1o/PWkjZ', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:51:42 GMT', 'connection': 'close', 'server': 'AmazonS3'}
+2025-03-04 15:51:42,795 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:42,796 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:42,797 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x0000014790D69EE0>
+2025-03-04 15:51:42,797 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:42,798 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,798 - aiobotocore.utils - DEBUG - S3 client configured for region us-east-1 but the bucket bvg-open-data is in region eu-central-1; Please configure the proper region to avoid multiple unnecessary redirects and signing attempts.
+2025-03-04 15:51:42,799 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:42,801 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,801 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:42,802 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:51:42,803 - botocore.utils - DEBUG - Updating URI from https://bvg-open-data.s3.amazonaws.com/ to https://bvg-open-data.s3.eu-central-1.amazonaws.com/
+2025-03-04 15:51:42,803 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:42,804 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:42,804 - botocore.endpoint - DEBUG - Response received to retry, sleeping for 0 seconds
+2025-03-04 15:51:42,806 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014790D333E0>>
+2025-03-04 15:51:42,807 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:42,807 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:42,808 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:42,808 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:42,809 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:42,810 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:42,810 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/
+
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145142Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:42,812 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145142Z
+20250304/eu-central-1/s3/aws4_request
+47bd14b157885d5b305930e009974536d4c24e61669971d577fd1f103122fa1c
+2025-03-04 15:51:42,813 - botocore.auth - DEBUG - Signature:
+7250c2659f033faa46fa7d20db8bbe056c4298550a29025e85c683472d11bcc1
+2025-03-04 15:51:42,814 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:42,815 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145142Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=7250c2659f033faa46fa7d20db8bbe056c4298550a29025e85c683472d11bcc1', 'amz-sdk-invocation-id': b'66eb86fc-5fdb-45f5-a1b7-5c885833d77c', 'amz-sdk-request': b'ttl=20250304T145157Z; attempt=2; max=5'}>
+2025-03-04 15:51:42,912 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:42,913 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:42,914 - botocore.parsers - DEBUG - Response headers: {'x-amz-id-2': 'Dp0h5lZG9EM37joFUsQ4+SceNtsCFLwQTjRLxqLK4GNzcmvPCDb6VHT5PrI31XmPJOv6pbFZd32glH3ikmbhmw==', 'x-amz-request-id': 'KQTC0DCBPDBJH5RM', 'date': 'Tue, 04 Mar 2025 14:51:43 GMT', 'x-amz-bucket-region': 'eu-central-1', 'x-amz-access-point-alias': 'false', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'server': 'AmazonS3'}
+2025-03-04 15:51:42,915 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:42,917 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:42,918 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x0000014790D69EE0>
+2025-03-04 15:51:42,919 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:42,920 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,921 - aiobotocore.utils - DEBUG - S3 request was previously redirected, not redirecting.
+2025-03-04 15:51:42,923 - aiobotocore.utils - DEBUG - S3 client configured for region us-east-1 but the bucket bvg-open-data is in region eu-central-1; Please configure the proper region to avoid multiple unnecessary redirects and signing attempts.
+2025-03-04 15:51:42,924 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:42,925 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,926 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Key': 'berlin_transport_data/_dlt_pipeline_state/init', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:42,928 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:51:42,929 - botocore.utils - DEBUG - Updating URI from https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init to https://bvg-open-data.s3.eu-central-1.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init
+2025-03-04 15:51:42,931 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:42,932 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:42,933 - botocore.endpoint - DEBUG - Response received to retry, sleeping for 0 seconds
+2025-03-04 15:51:42,935 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014790D333E0>>
+2025-03-04 15:51:42,936 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:42,937 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:42,939 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:42,939 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:42,939 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:42,942 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:42,942 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/berlin_transport_data/_dlt_pipeline_state/init
+
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145142Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:42,946 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145142Z
+20250304/eu-central-1/s3/aws4_request
+92cfc88d2c5216a64ab4660b4a0bbe748246f757a7d29c8834511cc5508e5f04
+2025-03-04 15:51:42,948 - botocore.auth - DEBUG - Signature:
+5f43fb5272cee5f399ed8febac58a1c71f3f3b626fbb7404c102a738d1b15be4
+2025-03-04 15:51:42,948 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:42,949 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/berlin_transport_data/_dlt_pipeline_state/init, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145142Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=5f43fb5272cee5f399ed8febac58a1c71f3f3b626fbb7404c102a738d1b15be4', 'amz-sdk-invocation-id': b'b631288c-ef5b-4ed4-8034-ca78496a7907', 'amz-sdk-request': b'ttl=20250304T145157Z; attempt=2; max=5'}>
+2025-03-04 15:51:42,977 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:42,978 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:42,979 - botocore.parsers - DEBUG - Response headers: {'x-amz-request-id': 'KQTAD737EX2CYNQ5', 'x-amz-id-2': 'nrAkIA7tOyHjh88VLiGj2yO/dcFRXNyZhhBDGl4TrAscTkrabqz8UtxURSDQ0uOi73z2a4tC6EGsomW9H2h2cA==', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:51:42 GMT', 'server': 'AmazonS3'}
+2025-03-04 15:51:42,980 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:42,981 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:42,982 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x0000014790D69EE0>
+2025-03-04 15:51:42,983 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:42,983 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,984 - aiobotocore.utils - DEBUG - S3 request was previously redirected, not redirecting.
+2025-03-04 15:51:42,984 - s3fs - DEBUG - Client error (maybe retryable): An error occurred (404) when calling the HeadObject operation: Not Found
+2025-03-04 15:51:42,986 - s3fs - DEBUG - CALL: list_objects_v2 - ({},) - {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'Delimiter': '/', 'MaxKeys': 1}
+2025-03-04 15:51:42,986 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function set_list_objects_encoding_type_url at 0x000001478ED41A80>
+2025-03-04 15:51:42,986 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function validate_bucket_name at 0x000001478ED405E0>
+2025-03-04 15:51:42,986 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function remove_bucket_from_url_paths_from_model at 0x000001478ED427A0>
+2025-03-04 15:51:42,989 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,990 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:42,991 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function generate_idempotent_uuid at 0x000001478ED40400>
+2025-03-04 15:51:42,991 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function _handle_request_validation_mode_member at 0x000001478ED42F20>
+2025-03-04 15:51:42,992 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:42,993 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:42,994 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:42,995 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:51:42,996 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:42,996 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:42,997 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_expect_header at 0x000001478ED409A0>
+2025-03-04 15:51:42,999 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:42,999 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_recursion_detection_header at 0x000001478ED1AB60>
+2025-03-04 15:51:42,999 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_query_compatibility_header at 0x000001478ED42E80>
+2025-03-04 15:51:43,000 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function inject_api_version_header_if_needed at 0x000001478ED41EE0>
+2025-03-04 15:51:43,000 - botocore.endpoint - DEBUG - Making request for OperationModel(name=ListObjectsV2) with params: {'url_path': '?list-type=2', 'query_string': {'prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'delimiter': '/', 'max-keys': 1, 'encoding-type': 'url'}, 'method': 'GET', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/', 'url': 'https://bvg-open-data.s3.eu-central-1.amazonaws.com/?list-type=2&prefix=berlin_transport_data%2F_dlt_pipeline_state%2Finit%2F&delimiter=%2F&max-keys=1&encoding-type=url', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x0000014790D33290>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 'encoding_type_auto_set': True, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/', 'Delimiter': '/', 'MaxKeys': 1, 'EncodingType': 'url'}}, 'input_params': {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/_dlt_pipeline_state/init/'}, 'signing': {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'eu-central-1'}]}}}
+2025-03-04 15:51:43,002 - botocore.hooks - DEBUG - Event request-created.s3.ListObjectsV2: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014790D333E0>>
+2025-03-04 15:51:43,002 - botocore.hooks - DEBUG - Event choose-signer.s3.ListObjectsV2: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014790AE57C0>>
+2025-03-04 15:51:43,002 - botocore.hooks - DEBUG - Event choose-signer.s3.ListObjectsV2: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:43,006 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:43,006 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:43,007 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x0000014790D699D0>>
+2025-03-04 15:51:43,008 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:43,008 - botocore.auth - DEBUG - CanonicalRequest:
+GET
+/
+delimiter=%2F&encoding-type=url&list-type=2&max-keys=1&prefix=berlin_transport_data%2F_dlt_pipeline_state%2Finit%2F
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145143Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:43,010 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145143Z
+20250304/eu-central-1/s3/aws4_request
+432771f45b64934efdc5a560ade12f9bc814c7ab44b88065882b4facda948b01
+2025-03-04 15:51:43,012 - botocore.auth - DEBUG - Signature:
+52f55b75924f474e5fdf13877e197acedbe10f4a49bc62dd74d0d1828f469e21
+2025-03-04 15:51:43,012 - botocore.hooks - DEBUG - Event request-created.s3.ListObjectsV2: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:43,012 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=GET, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/?list-type=2&prefix=berlin_transport_data%2F_dlt_pipeline_state%2Finit%2F&delimiter=%2F&max-keys=1&encoding-type=url, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145143Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=52f55b75924f474e5fdf13877e197acedbe10f4a49bc62dd74d0d1828f469e21', 'amz-sdk-invocation-id': b'6e97c811-283f-49f4-8dba-544a1bdb456e', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:51:43,048 - botocore.hooks - DEBUG - Event before-parse.s3.ListObjectsV2: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:43,049 - botocore.hooks - DEBUG - Event before-parse.s3.ListObjectsV2: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:43,049 - botocore.parsers - DEBUG - Response headers: {'x-amz-id-2': 'bWyZbx5BDmYaSFU2EQLS1e6N7C4Y6T6T3s5uOnIOjDjTIn91DuD/GfFbYdRQn0ilf/kh+a60fJ5nCVxt0/bybA==', 'x-amz-request-id': 'QGR7HADNP1R3953T', 'date': 'Tue, 04 Mar 2025 14:51:44 GMT', 'x-amz-bucket-region': 'eu-central-1', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'server': 'AmazonS3'}
+2025-03-04 15:51:43,050 - botocore.parsers - DEBUG - Response body:
+b'<?xml version="1.0" encoding="UTF-8"?>\n<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bvg-open-data</Name><Prefix>berlin_transport_data/_dlt_pipeline_state/init/</Prefix><KeyCount>0</KeyCount><MaxKeys>1</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated></ListBucketResult>'
+2025-03-04 15:51:43,051 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:43,051 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x0000014790D69EE0>
+2025-03-04 15:51:43,051 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:43,051 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014790D33860>>
+2025-03-04 15:51:43,051 - botocore.hooks - DEBUG - Event after-call.s3.ListObjectsV2: calling handler <function decode_list_object_v2 at 0x000001478ED41BC0>
+2025-03-04 15:51:43,070 - s3fs - DEBUG - Setting up s3fs instance
+2025-03-04 15:51:43,076 - botocore.hooks - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2025-03-04 15:51:43,079 - botocore.hooks - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2025-03-04 15:51:43,080 - botocore.hooks - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2025-03-04 15:51:43,083 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2025-03-04 15:51:43,084 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2025-03-04 15:51:43,085 - botocore.hooks - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2025-03-04 15:51:43,086 - botocore.hooks - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2025-03-04 15:51:43,086 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2025-03-04 15:51:43,086 - botocore.hooks - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2025-03-04 15:51:43,090 - botocore.hooks - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2025-03-04 15:51:43,091 - botocore.hooks - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2025-03-04 15:51:43,092 - s3fs - DEBUG - RC: caching enabled? False (explicit option is False)
+2025-03-04 15:51:43,095 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\endpoints.json
+2025-03-04 15:51:43,119 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\sdk-default-configuration.json
+2025-03-04 15:51:43,120 - botocore.hooks - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x000001478ECF59E0>
+2025-03-04 15:51:43,197 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\service-2.json.gz
+2025-03-04 15:51:43,214 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\service-2.sdk-extras.json
+2025-03-04 15:51:43,278 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\s3\2006-03-01\endpoint-rule-set-1.json.gz
+2025-03-04 15:51:43,278 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\partitions.json
+2025-03-04 15:51:43,293 - botocore.hooks - DEBUG - Event creating-client-class.s3: calling handler <function add_generate_presigned_post at 0x000001478F048360>
+2025-03-04 15:51:43,294 - botocore.hooks - DEBUG - Event creating-client-class.s3: calling handler <function add_generate_presigned_url at 0x000001478F0480E0>
+2025-03-04 15:51:43,295 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: environment_service
+2025-03-04 15:51:43,295 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: environment_global
+2025-03-04 15:51:43,296 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: config_service
+2025-03-04 15:51:43,297 - botocore.configprovider - DEBUG - Looking for endpoint for s3 via: config_global
+2025-03-04 15:51:43,298 - botocore.configprovider - DEBUG - No configured endpoint found.
+2025-03-04 15:51:43,299 - botocore.endpoint - DEBUG - Setting s3 timeout as (5, 15)
+2025-03-04 15:51:43,301 - botocore.loaders - DEBUG - Loading JSON file: C:\Python312\Lib\site-packages\botocore\data\_retry.json
+2025-03-04 15:51:43,302 - botocore.client - DEBUG - Registering retry handlers for service: s3
+2025-03-04 15:51:43,303 - botocore.utils - DEBUG - Registering S3 region redirector handler
+2025-03-04 15:51:43,303 - botocore.utils - DEBUG - Registering S3Express Identity Resolver
+2025-03-04 15:51:43,304 - s3fs - DEBUG - CALL: head_object - ({},) - {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/init'}
+2025-03-04 15:51:43,305 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function sse_md5 at 0x000001478ED40680>
+2025-03-04 15:51:43,305 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function validate_bucket_name at 0x000001478ED405E0>
+2025-03-04 15:51:43,306 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function remove_bucket_from_url_paths_from_model at 0x000001478ED427A0>
+2025-03-04 15:51:43,306 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:43,307 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:43,308 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function generate_idempotent_uuid at 0x000001478ED40400>
+2025-03-04 15:51:43,308 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadObject: calling handler <function _handle_request_validation_mode_member at 0x000001478ED42F20>
+2025-03-04 15:51:43,309 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:43,309 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:43,310 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'us-east-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Key': 'berlin_transport_data/init', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:43,311 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.amazonaws.com
+2025-03-04 15:51:43,311 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:43,312 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:43,313 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_expect_header at 0x000001478ED409A0>
+2025-03-04 15:51:43,313 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:43,313 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_recursion_detection_header at 0x000001478ED1AB60>
+2025-03-04 15:51:43,314 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function add_query_compatibility_header at 0x000001478ED42E80>
+2025-03-04 15:51:43,315 - botocore.hooks - DEBUG - Event before-call.s3.HeadObject: calling handler <function inject_api_version_header_if_needed at 0x000001478ED41EE0>
+2025-03-04 15:51:43,316 - botocore.endpoint - DEBUG - Making request for OperationModel(name=HeadObject) with params: {'url_path': '/berlin_transport_data/init', 'query_string': {}, 'method': 'HEAD', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/berlin_transport_data/init', 'url': 'https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/init', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x00000147917427E0>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/init'}}, 'input_params': {'Bucket': 'bvg-open-data', 'Key': 'berlin_transport_data/init'}, 'signing': {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'us-east-1'}]}}}
+2025-03-04 15:51:43,318 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014791742840>>
+2025-03-04 15:51:43,319 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:43,320 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:43,320 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:43,321 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:43,321 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:43,322 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:43,323 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/berlin_transport_data/init
+
+host:bvg-open-data.s3.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145143Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:43,324 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145143Z
+20250304/us-east-1/s3/aws4_request
+824f07e5c5594cc172642820b19a77779ddcc7b4bf937201c831c9943c5e3656
+2025-03-04 15:51:43,326 - botocore.auth - DEBUG - Signature:
+7b90fd1ace576a4836bcb4f42bd3648fa24ac3868cf034ab4b2eae674021c337
+2025-03-04 15:51:43,327 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:43,327 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/init, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145143Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=7b90fd1ace576a4836bcb4f42bd3648fa24ac3868cf034ab4b2eae674021c337', 'amz-sdk-invocation-id': b'fb07dc4e-5ca0-4960-9ec7-722387796364', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:51:43,329 - botocore.httpsession - DEBUG - Certificate path: C:\Python312\Lib\site-packages\certifi\cacert.pem
+2025-03-04 15:51:43,840 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:43,840 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:43,840 - botocore.parsers - DEBUG - Response headers: {'x-amz-request-id': 'QGR0MMTVH64CE2K2', 'x-amz-id-2': '9UrNHyh2QVRbq9c3k1CUwNmLYBM4PAjzy+C62IqN5s1c/t3kgG9P2yLz9owzgHDr4S7lN73ElCGbWLaYM130iw==', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:51:43 GMT', 'connection': 'close', 'server': 'AmazonS3'}
+2025-03-04 15:51:43,840 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:43,840 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:43,840 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000001479177A270>
+2025-03-04 15:51:43,840 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:43,851 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:43,852 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function validate_bucket_name at 0x000001478ED405E0>
+2025-03-04 15:51:43,854 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function remove_bucket_from_url_paths_from_model at 0x000001478ED427A0>
+2025-03-04 15:51:43,855 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:43,855 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:43,858 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function generate_idempotent_uuid at 0x000001478ED40400>
+2025-03-04 15:51:43,859 - botocore.hooks - DEBUG - Event before-parameter-build.s3.HeadBucket: calling handler <function _handle_request_validation_mode_member at 0x000001478ED42F20>
+2025-03-04 15:51:43,860 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:43,861 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:43,861 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'us-east-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:43,863 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.amazonaws.com
+2025-03-04 15:51:43,863 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:43,864 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:43,865 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_expect_header at 0x000001478ED409A0>
+2025-03-04 15:51:43,865 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:43,866 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_recursion_detection_header at 0x000001478ED1AB60>
+2025-03-04 15:51:43,866 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function add_query_compatibility_header at 0x000001478ED42E80>
+2025-03-04 15:51:43,867 - botocore.hooks - DEBUG - Event before-call.s3.HeadBucket: calling handler <function inject_api_version_header_if_needed at 0x000001478ED41EE0>
+2025-03-04 15:51:43,867 - botocore.endpoint - DEBUG - Making request for OperationModel(name=HeadBucket) with params: {'url_path': '', 'query_string': {}, 'method': 'HEAD', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/', 'url': 'https://bvg-open-data.s3.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x00000147917427E0>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data'}}, 'input_params': {'Bucket': 'bvg-open-data'}, 'signing': {'region': 'us-east-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'us-east-1'}]}}}
+2025-03-04 15:51:43,870 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014791742840>>
+2025-03-04 15:51:43,870 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:43,871 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:43,871 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:43,871 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:43,872 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:43,872 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:43,873 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/
+
+host:bvg-open-data.s3.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145143Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:43,875 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145143Z
+20250304/us-east-1/s3/aws4_request
+5c6675665dcfd3b1576d222ddff16c95168e7e768dcc2a9cda38161ad9737e4e
+2025-03-04 15:51:43,876 - botocore.auth - DEBUG - Signature:
+b12335b33e185de9f253f2e629dc36f44a0a5e705025cea480b6d7d1cddaa19a
+2025-03-04 15:51:43,877 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:43,877 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.amazonaws.com/, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145143Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b12335b33e185de9f253f2e629dc36f44a0a5e705025cea480b6d7d1cddaa19a', 'amz-sdk-invocation-id': b'6d5cc5d6-b431-4e3e-b21c-59368bdc730a', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:51:43,944 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:43,944 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:43,944 - botocore.parsers - DEBUG - Response headers: {'x-amz-bucket-region': 'eu-central-1', 'x-amz-request-id': 'QGR1BRP7S4FGN8D9', 'x-amz-id-2': 'lhDbgbcs4960sVR7I7O7A3JIxm0aek2cB4p9Qx9fT+rSKuSqZx+LGgFrcJCZHxjcA6QsYmcnqXo=', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:51:43 GMT', 'connection': 'close', 'server': 'AmazonS3'}
+2025-03-04 15:51:43,944 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:43,944 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:43,944 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000001479177A270>
+2025-03-04 15:51:43,944 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:43,944 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:43,944 - aiobotocore.utils - DEBUG - S3 client configured for region us-east-1 but the bucket bvg-open-data is in region eu-central-1; Please configure the proper region to avoid multiple unnecessary redirects and signing attempts.
+2025-03-04 15:51:43,944 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:43,951 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:43,951 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:43,952 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:51:43,953 - botocore.utils - DEBUG - Updating URI from https://bvg-open-data.s3.amazonaws.com/ to https://bvg-open-data.s3.eu-central-1.amazonaws.com/
+2025-03-04 15:51:43,953 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:43,953 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:43,954 - botocore.endpoint - DEBUG - Response received to retry, sleeping for 0 seconds
+2025-03-04 15:51:43,955 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014791742840>>
+2025-03-04 15:51:43,955 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:43,956 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadBucket: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:43,956 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:43,956 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:43,956 - botocore.hooks - DEBUG - Event before-sign.s3.HeadBucket: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:43,958 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:43,959 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/
+
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145143Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:43,962 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145143Z
+20250304/eu-central-1/s3/aws4_request
+6f37df37a335784dadd8bcc4e5454177249869fdb7c6530a3e69d2ac2c03a613
+2025-03-04 15:51:43,963 - botocore.auth - DEBUG - Signature:
+88a5cf81ebcba53b3c21ba98c4fcea854d10c3ff8487f8ccdff8689c93a4ae00
+2025-03-04 15:51:43,964 - botocore.hooks - DEBUG - Event request-created.s3.HeadBucket: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:43,964 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145143Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=88a5cf81ebcba53b3c21ba98c4fcea854d10c3ff8487f8ccdff8689c93a4ae00', 'amz-sdk-invocation-id': b'6d5cc5d6-b431-4e3e-b21c-59368bdc730a', 'amz-sdk-request': b'ttl=20250304T145158Z; attempt=2; max=5'}>
+2025-03-04 15:51:44,059 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:44,059 - botocore.hooks - DEBUG - Event before-parse.s3.HeadBucket: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:44,059 - botocore.parsers - DEBUG - Response headers: {'x-amz-id-2': '5/i2khsPuTqFV62TxTp44w++LDkrAc9LUQGYQf+0vU7IicOJQ1qbmd9ifq0EvcNW8nBKDJ2ZRGmGVwiXtTx2pg==', 'x-amz-request-id': 'TFNW5V3C6AFVWY46', 'date': 'Tue, 04 Mar 2025 14:51:45 GMT', 'x-amz-bucket-region': 'eu-central-1', 'x-amz-access-point-alias': 'false', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'server': 'AmazonS3'}
+2025-03-04 15:51:44,059 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:44,059 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:44,069 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000001479177A270>
+2025-03-04 15:51:44,070 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:44,072 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadBucket: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:44,074 - aiobotocore.utils - DEBUG - S3 request was previously redirected, not redirecting.
+2025-03-04 15:51:44,076 - aiobotocore.utils - DEBUG - S3 client configured for region us-east-1 but the bucket bvg-open-data is in region eu-central-1; Please configure the proper region to avoid multiple unnecessary redirects and signing attempts.
+2025-03-04 15:51:44,078 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:44,079 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:44,082 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Key': 'berlin_transport_data/init', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:44,085 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:51:44,086 - botocore.utils - DEBUG - Updating URI from https://bvg-open-data.s3.amazonaws.com/berlin_transport_data/init to https://bvg-open-data.s3.eu-central-1.amazonaws.com/berlin_transport_data/init
+2025-03-04 15:51:44,087 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:44,087 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:44,090 - botocore.endpoint - DEBUG - Response received to retry, sleeping for 0 seconds
+2025-03-04 15:51:44,091 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014791742840>>
+2025-03-04 15:51:44,092 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:44,093 - botocore.hooks - DEBUG - Event choose-signer.s3.HeadObject: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:44,094 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:44,095 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:44,095 - botocore.hooks - DEBUG - Event before-sign.s3.HeadObject: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:44,096 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:44,097 - botocore.auth - DEBUG - CanonicalRequest:
+HEAD
+/berlin_transport_data/init
+
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145144Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:44,099 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145144Z
+20250304/eu-central-1/s3/aws4_request
+7b5a15f89c3471532a6989b924697fe6d59c0491beaa5a773c980910778bf52a
+2025-03-04 15:51:44,101 - botocore.auth - DEBUG - Signature:
+e2a1d4c007b3f44e634fae047fadc1027beae33d3871e61d3ad5fad98b53b2c6
+2025-03-04 15:51:44,101 - botocore.hooks - DEBUG - Event request-created.s3.HeadObject: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:44,102 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=HEAD, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/berlin_transport_data/init, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145144Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=e2a1d4c007b3f44e634fae047fadc1027beae33d3871e61d3ad5fad98b53b2c6', 'amz-sdk-invocation-id': b'fb07dc4e-5ca0-4960-9ec7-722387796364', 'amz-sdk-request': b'ttl=20250304T145158Z; attempt=2; max=5'}>
+2025-03-04 15:51:44,128 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:44,128 - botocore.hooks - DEBUG - Event before-parse.s3.HeadObject: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:44,128 - botocore.parsers - DEBUG - Response headers: {'x-amz-request-id': 'TFNTNKHXK3JP06Z4', 'x-amz-id-2': 'ndhp918YD+kA1gG/bE/abKPj7yy+IxJmu328DBauPe44k2sRR7SZ9PIi5qMpI7MnafOdAUTsl985iEtqydptbA==', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'date': 'Tue, 04 Mar 2025 14:51:44 GMT', 'server': 'AmazonS3'}
+2025-03-04 15:51:44,128 - botocore.parsers - DEBUG - Response body:
+b''
+2025-03-04 15:51:44,128 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:44,128 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000001479177A270>
+2025-03-04 15:51:44,128 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:44,128 - botocore.hooks - DEBUG - Event needs-retry.s3.HeadObject: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:44,128 - aiobotocore.utils - DEBUG - S3 request was previously redirected, not redirecting.
+2025-03-04 15:51:44,138 - s3fs - DEBUG - Client error (maybe retryable): An error occurred (404) when calling the HeadObject operation: Not Found
+2025-03-04 15:51:44,139 - s3fs - DEBUG - CALL: list_objects_v2 - ({},) - {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/init/', 'Delimiter': '/', 'MaxKeys': 1}
+2025-03-04 15:51:44,140 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function set_list_objects_encoding_type_url at 0x000001478ED41A80>
+2025-03-04 15:51:44,140 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function validate_bucket_name at 0x000001478ED405E0>
+2025-03-04 15:51:44,141 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function remove_bucket_from_url_paths_from_model at 0x000001478ED427A0>
+2025-03-04 15:51:44,142 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <bound method S3RegionRedirectorv2.annotate_request_context of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:44,143 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <bound method ClientCreator._inject_s3_input_parameters of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:44,144 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function generate_idempotent_uuid at 0x000001478ED40400>
+2025-03-04 15:51:44,145 - botocore.hooks - DEBUG - Event before-parameter-build.s3.ListObjectsV2: calling handler <function _handle_request_validation_mode_member at 0x000001478ED42F20>
+2025-03-04 15:51:44,146 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <function customize_endpoint_resolver_builtins at 0x000001478ED42980>
+2025-03-04 15:51:44,146 - botocore.hooks - DEBUG - Event before-endpoint-resolution.s3: calling handler <bound method S3RegionRedirectorv2.redirect_from_cache of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:44,147 - aiobotocore.regions - DEBUG - Calling endpoint provider with parameters: {'Bucket': 'bvg-open-data', 'Region': 'eu-central-1', 'UseFIPS': False, 'UseDualStack': False, 'ForcePathStyle': False, 'Accelerate': False, 'UseGlobalEndpoint': True, 'Prefix': 'berlin_transport_data/init/', 'DisableMultiRegionAccessPoints': False, 'UseArnRegion': True}
+2025-03-04 15:51:44,149 - aiobotocore.regions - DEBUG - Endpoint provider result: https://bvg-open-data.s3.eu-central-1.amazonaws.com
+2025-03-04 15:51:44,149 - botocore.regions - DEBUG - Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2025-03-04 15:51:44,150 - botocore.regions - DEBUG - Selected auth type "v4" as "v4" with signing context params: {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}
+2025-03-04 15:51:44,150 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_expect_header at 0x000001478ED409A0>
+2025-03-04 15:51:44,150 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <bound method S3ExpressIdentityResolver.apply_signing_cache_key of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:44,150 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_recursion_detection_header at 0x000001478ED1AB60>
+2025-03-04 15:51:44,153 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function add_query_compatibility_header at 0x000001478ED42E80>
+2025-03-04 15:51:44,154 - botocore.hooks - DEBUG - Event before-call.s3.ListObjectsV2: calling handler <function inject_api_version_header_if_needed at 0x000001478ED41EE0>
+2025-03-04 15:51:44,154 - botocore.endpoint - DEBUG - Making request for OperationModel(name=ListObjectsV2) with params: {'url_path': '?list-type=2', 'query_string': {'prefix': 'berlin_transport_data/init/', 'delimiter': '/', 'max-keys': 1, 'encoding-type': 'url'}, 'method': 'GET', 'headers': {'User-Agent': 'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1'}, 'body': b'', 'auth_path': '/bvg-open-data/', 'url': 'https://bvg-open-data.s3.eu-central-1.amazonaws.com/?list-type=2&prefix=berlin_transport_data%2Finit%2F&delimiter=%2F&max-keys=1&encoding-type=url', 'context': {'client_region': 'us-east-1', 'client_config': <aiobotocore.config.AioConfig object at 0x00000147917427E0>, 'has_streaming_input': False, 'auth_type': 'v4', 'unsigned_payload': None, 'encoding_type_auto_set': True, 's3_redirect': {'redirected': False, 'bucket': 'bvg-open-data', 'params': {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/init/', 'Delimiter': '/', 'MaxKeys': 1, 'EncodingType': 'url'}}, 'input_params': {'Bucket': 'bvg-open-data', 'Prefix': 'berlin_transport_data/init/'}, 'signing': {'region': 'eu-central-1', 'signing_name': 's3', 'disableDoubleEncoding': True}, 'endpoint_properties': {'authSchemes': [{'disableDoubleEncoding': True, 'name': 'sigv4', 'signingName': 's3', 'signingRegion': 'eu-central-1'}]}}}
+2025-03-04 15:51:44,157 - botocore.hooks - DEBUG - Event request-created.s3.ListObjectsV2: calling handler <bound method AioRequestSigner.handler of <aiobotocore.signers.AioRequestSigner object at 0x0000014791742840>>
+2025-03-04 15:51:44,158 - botocore.hooks - DEBUG - Event choose-signer.s3.ListObjectsV2: calling handler <bound method ClientCreator._default_s3_presign_to_sigv2 of <aiobotocore.client.AioClientCreator object at 0x0000014791511580>>
+2025-03-04 15:51:44,159 - botocore.hooks - DEBUG - Event choose-signer.s3.ListObjectsV2: calling handler <function set_operation_specific_signer at 0x000001478ED40220>
+2025-03-04 15:51:44,160 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <function remove_arn_from_signing_path at 0x000001478ED428E0>
+2025-03-04 15:51:44,161 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <function _set_extra_headers_for_unsigned_request at 0x000001478ED42FC0>
+2025-03-04 15:51:44,161 - botocore.hooks - DEBUG - Event before-sign.s3.ListObjectsV2: calling handler <bound method S3ExpressIdentityResolver.resolve_s3express_identity of <aiobotocore.utils.AioS3ExpressIdentityResolver object at 0x000001479177A300>>
+2025-03-04 15:51:44,163 - botocore.auth - DEBUG - Calculating signature using v4 auth.
+2025-03-04 15:51:44,163 - botocore.auth - DEBUG - CanonicalRequest:
+GET
+/
+delimiter=%2F&encoding-type=url&list-type=2&max-keys=1&prefix=berlin_transport_data%2Finit%2F
+host:bvg-open-data.s3.eu-central-1.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20250304T145144Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2025-03-04 15:51:44,165 - botocore.auth - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20250304T145144Z
+20250304/eu-central-1/s3/aws4_request
+f23f60e78df4cd839a5c6ff53b6384191ec2e551a5a68ca0331999d2de9868f6
+2025-03-04 15:51:44,166 - botocore.auth - DEBUG - Signature:
+3ef17329980648412919aadd81e0e9254c7d777e6f256a8d17cc7ed6543a76dc
+2025-03-04 15:51:44,167 - botocore.hooks - DEBUG - Event request-created.s3.ListObjectsV2: calling handler <function add_retry_headers at 0x000001478ED42700>
+2025-03-04 15:51:44,167 - botocore.endpoint - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=GET, url=https://bvg-open-data.s3.eu-central-1.amazonaws.com/?list-type=2&prefix=berlin_transport_data%2Finit%2F&delimiter=%2F&max-keys=1&encoding-type=url, headers={'User-Agent': b'aiobotocore/2.21.0 md/Botocore#1.37.1 ua/2.0 os/windows#10 md/arch#amd64 lang/python#3.12.1 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.37.1', 'X-Amz-Date': b'20250304T145144Z', 'X-Amz-Content-SHA256': b'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA2YIB75XF7PJEBWUV/20250304/eu-central-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=3ef17329980648412919aadd81e0e9254c7d777e6f256a8d17cc7ed6543a76dc', 'amz-sdk-invocation-id': b'adc61f57-402c-4c66-bc32-1212650ad335', 'amz-sdk-request': b'attempt=1'}>
+2025-03-04 15:51:44,199 - botocore.hooks - DEBUG - Event before-parse.s3.ListObjectsV2: calling handler <function _handle_200_error at 0x000001478ED42CA0>
+2025-03-04 15:51:44,199 - botocore.hooks - DEBUG - Event before-parse.s3.ListObjectsV2: calling handler <function handle_expires_header at 0x000001478ED42AC0>
+2025-03-04 15:51:44,199 - botocore.parsers - DEBUG - Response headers: {'x-amz-id-2': '10SrMYiDHMYN803gGsw+0sJa+fUXiV8c4XLkZQyezb2CvRj3IdYA1J6wND4zuKRs1l8MwIbm5gKNOgLVCFH0FA==', 'x-amz-request-id': 'TFNSH9GWWXT312BV', 'date': 'Tue, 04 Mar 2025 14:51:45 GMT', 'x-amz-bucket-region': 'eu-central-1', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'server': 'AmazonS3'}
+2025-03-04 15:51:44,208 - botocore.parsers - DEBUG - Response body:
+b'<?xml version="1.0" encoding="UTF-8"?>\n<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bvg-open-data</Name><Prefix>berlin_transport_data/init/</Prefix><KeyCount>0</KeyCount><MaxKeys>1</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated></ListBucketResult>'
+2025-03-04 15:51:44,210 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <function _update_status_code at 0x000001478ED42DE0>
+2025-03-04 15:51:44,210 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <aiobotocore.retryhandler.AioRetryHandler object at 0x000001479177A270>
+2025-03-04 15:51:44,210 - botocore.retryhandler - DEBUG - No retry needed.
+2025-03-04 15:51:44,210 - botocore.hooks - DEBUG - Event needs-retry.s3.ListObjectsV2: calling handler <bound method AioS3RegionRedirectorv2.redirect_from_error of <aiobotocore.utils.AioS3RegionRedirectorv2 object at 0x0000014791779D00>>
+2025-03-04 15:51:44,210 - botocore.hooks - DEBUG - Event after-call.s3.ListObjectsV2: calling handler <function decode_list_object_v2 at 0x000001478ED41BC0>
+2025-03-04 15:51:44,359 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): telemetry.scalevector.ai:443
+2025-03-04 15:51:44,359 - BVGPipeline - ERROR - Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\pipe.py", line 278, in evaluate_gen
+    self.replace_gen(gen())  # type: ignore
+                     ^^^^^
+TypeError: BVGTransportDataSource.get_arrivals() missing 1 required positional argument: 'self'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 468, in extract
+    self._extract_source(
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 1240, in _extract_source
+    load_id = extract.extract(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\extract.py", line 435, in extract
+    self._extract_single_source(
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\extract.py", line 351, in _extract_single_source
+    with PipeIterator.from_pipes(
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\common\configuration\inject.py", line 259, in _wrap
+    return f(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\pipe_iterator.py", line 145, in from_pipes
+    _fork_pipeline(pipe)
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\pipe_iterator.py", line 135, in _fork_pipeline
+    pipe.evaluate_gen()
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\extract\pipe.py", line 280, in evaluate_gen
+    raise ParametrizedResourceUnbound(
+dlt.extract.exceptions.ParametrizedResourceUnbound: The resource arrivals is parametrized and expects following arguments: (self) -> Generator[List[Dict], NoneType, NoneType]. Did you forget to bind the get_arrivals function? For example from `source.arrivals.bind(...) .Details: BVGTransportDataSource.get_arrivals() missing 1 required positional argument: 'self'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\Data Engg\dlt\dlt_project\run_pipeline.py", line 247, in run_bvg_pipeline
+    load_info = pipeline.run(
+                ^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 223, in _wrap
+    step_info = f(self, *args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 732, in run
+    self.extract(
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 223, in _wrap
+    step_info = f(self, *args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 177, in _wrap
+    rv = f(self, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 163, in _wrap
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\Python\Python312\site-packages\dlt\pipeline\pipeline.py", line 489, in extract
+    raise PipelineStepFailed(
+dlt.pipeline.exceptions.PipelineStepFailed: Pipeline execution failed at stage extract when processing package 1741099904.2709763 with exception:
+
+<class 'dlt.extract.exceptions.ParametrizedResourceUnbound'>
+The resource arrivals is parametrized and expects following arguments: (self) -> Generator[List[Dict], NoneType, NoneType]. Did you forget to bind the get_arrivals function? For example from `source.arrivals.bind(...) .Details: BVGTransportDataSource.get_arrivals() missing 1 required positional argument: 'self'
+2025-03-04 15:51:44,937 - urllib3.connectionpool - DEBUG - https://telemetry.scalevector.ai:443 "POST / HTTP/1.1" 204 0
+2025-03-04 15:51:44,975 - urllib3.connectionpool - DEBUG - https://telemetry.scalevector.ai:443 "POST / HTTP/1.1" 204 0
+2025-03-04 15:51:44,975 - asyncio - DEBUG - Using proactor: IocpProactor
