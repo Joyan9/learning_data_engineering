@@ -69,8 +69,56 @@ class pyspark.StorageLevel(useDisk: bool, useMemory: bool, useOffHeap: bool, des
 
 
 ## **Serialization and Deserialization**
+**Serialization** is the process of converting an object’s state(data) to a byte stream. This byte stream can then be saved to a file, sent over a network, or stored in a database.
+
+**Deserialization** is the reverse process of serialization. It involves taking a byte stream and converting it back into an object.
+
+>*A byte stream is a sequence of bytes (8-bit integers) that represents data in its most basic, machine-readable format.* 
+
+![Spark Memory Management](/Articles/serialization_and_deserialization.PNG)
 
 
+
+### Why Serialization?
+
+In Apache Spark, serialization is used for:
+- Storing data efficiently - Enables more compact data storage
+- Transferring data between nodes in a distributed system - Converting data to byte streams allows faster data transfer between cluster nodes
+- Caching and checkpointing
+
+There two options for serialization in Spark, but those are beyond the scope of this article. If you would like to read more on that then you can refer to Spark's documentation [here.](https://spark.apache.org/docs/latest/tuning.html#:~:text=Java%20serialization%3A%20By%20default%2C%20Spark,you%20create%20that%20implements%20java)
+
+
+### Deserialized Data
+- Stored in memory in its original, human-readable format
+- Easier to work with directly
+- Takes more memory space
+- Faster to process locally
+
+### Serialized Data
+- Converted to compact byte stream
+- Smaller memory footprint
+- Slower to access and process
+- Requires conversion back to original format before use
+
+## Storage Levels in Spark and Serialization
+
+Spark's storage levels impact serialization:
+- `MEMORY_ONLY`: Keeps data deserialized in memory
+- `MEMORY_ONLY_SER`: Serializes data in memory
+- `DISK_ONLY`: Stores serialized data on disk
+- `MEMORY_AND_DISK`: Mixture of memory and disk storage with serialization
+
+## Example of Storage Level Impact
+
+```python
+# RDD storage with different serialization approaches
+rdd.persist(StorageLevel.MEMORY_ONLY)  # Deserialized, in-memory
+rdd.persist(StorageLevel.MEMORY_ONLY_SER)  # Serialized, in-memory
+```
+
+To-do:  experiment and see how much data does these two options copy in Memory
+rdd.persist(StorageLevel.MEMORY_ONLY) # Deserialized, in-memory rdd.persist(StorageLevel.MEMORY_ONLY_SER)
 
 ## References
 
