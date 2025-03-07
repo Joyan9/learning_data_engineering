@@ -27,7 +27,7 @@
     - Cosmetic Cleanups includes
         - Formatting the query for readability
         - Consistency - Lower case, Upper Case etc
-        -  Appropriate spacing and indentation
+        - Appropriate spacing and indentation
     - CTE Grouping can be considered in the following order
         - Import CTEs 
             - Group CTEs that show the source tables right at the top of the model, this way the person reading it will know which models or sources are used here
@@ -49,3 +49,12 @@
 
         - Final CTEs
             - Output query
+
+5. **Centralising Transformation**
+    - This step involves splitting up the model into
+        - staging - deals with the source data and applies basic transformations on it. 
+        - intermediate (optional)
+        - final 
+    - Follow this naming convetion
+        - *{model_type}_{source_name}__{model_name}.sql*
+        - ex: stg_jaffle_shop__orders.sql
