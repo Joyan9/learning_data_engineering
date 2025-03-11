@@ -4,6 +4,7 @@
 1. **Migrate Legacy code to dbt**
     - This could also involve changing the SQL flavour if you are migrating to a different DBMS (from MySQL to Snowflake)
     - Within your dbt project you can create a folder `legacy` under `models` directory
+    - Ensure that it can run and build in your data warehouse by running `dbt run`.
 
 2. **Change the hard-coded Table Reference to Source Function**
     
@@ -22,7 +23,10 @@
         ```
 
 3. **Choosing Refactoring Strategy**
-
+    - Refactor on top of the existing model: Create a new branch and refactor directly on the model that you created in the previous steps.
+    - Refactor alongside the existing model: Rename the existing model by prepending it with legacy, then copy the code into a new file with the original file name.
+      
+    The second option plays better with the auditing process. 
 4. **CTE Groupings and Cosmetic Cleanups**
     - Cosmetic Cleanups includes
         - Formatting the query for readability
@@ -52,9 +56,26 @@
 
 5. **Centralising Transformation**
     - This step involves splitting up the model into
-        - staging - deals with the source data and applies basic transformations on it. 
-        - intermediate (optional)
-        - final 
+        - **Staging** - Handles source data with basic transformations such as renaming columns, concatenating fields, and converting data types. Update aliases with purposeful names, scan for redundant transformations, and migrate them into staging models.
+        - **Intermediate** (optional) - If the transformation logic can be used for other models, you can split them out to intermediate stage.
+        - **Final** - For the remaining logic, simplify aggregations and joins. Update naming of CTEs for better readability. 
     - Follow this naming convetion
         - *{model_type}_{source_name}__{model_name}.sql*
         - ex: stg_jaffle_shop__orders.sql
+     
+6. **Auditing**
+   - Audit your new model against your original query to ensure that the refactoring has not altered the results.
+    - The goal is for both the original code and your final model to produce the same results.
+    - Consider using the `audit_helper` package
+  
+       ```sql
+        {% set old_etl_relation=ref('customer_orders') %} 
+        
+        {% set dbt_relation=ref('fct_customer_orders') %}  {{ 
+        
+        audit_helper.compare_relations(
+                a_relation=old_etl_relation,
+                b_relation=dbt_relation,
+                primary_key="order_id"
+            ) }}
+       ```
