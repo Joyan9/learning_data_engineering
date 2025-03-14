@@ -51,3 +51,25 @@ with DAG(
     )
 
 ```
+
+## XComs
+- Stands for cross-communications between tasks
+- An XCom is identified by
+    - it's name
+    - task_id
+    - dag_id
+- Designed to pass small values of data (not large dataframes)
+- You can either push or pull XCom values
+
+**Push XCom**
+```python
+task_instance.xcom_push(key = "identifier", value = any_serializable_value)
+```
+
+**Pull XCom**
+
+```python
+task_instance.xcom_pull(key = "identifier", task_ids = "task1")
+```
+
+- XComs are a relative of Variables, with the main difference being that XComs are per-task-instance and designed for communication within a DAG run, while Variables are global and designed for overall configuration and value sharing.
