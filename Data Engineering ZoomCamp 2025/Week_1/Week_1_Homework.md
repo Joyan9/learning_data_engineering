@@ -174,10 +174,10 @@ During the period of October 1st 2019 (inclusive) and November 1st 2019 (exclusi
 Answers:
 
 - 104,802;  197,670;  110,612;  27,831;  35,281
-- 104,802;  198,924;  109,603;  27,678;  35,189
+- 104,802;  198,924;  109,603;  27,678;  35,189 ✅
 - 104,793;  201,407;  110,612;  27,831;  35,281
 - 104,793;  202,661;  109,603;  27,678;  35,189
-- 104,838;  199,013;  109,645;  27,688;  35,202 ✅
+- 104,838;  199,013;  109,645;  27,688;  35,202 
 
 ### Solution 3
 ```sql
@@ -311,17 +311,38 @@ ORDER BY 2 DESC
 ## Question 6. Largest tip
 
 For the passengers picked up in October 2019 in the zone
-named "East Harlem North" which was the drop off zone that had
-the largest tip?
+named "East Harlem North" which was the drop off zone that had the largest tip?
 
 Note: it's `tip` , not `trip`
 
 We need the name of the zone, not the ID.
 
 - Yorkville West
-- JFK Airport
+- JFK Airport ✅
 - East Harlem North
 - East Harlem South
+
+### Solution 6
+
+```sql
+SELECT 
+	z1."Zone" as pickup_zone,
+    z2."Zone" as dropoff_zone,
+	t."tip_amount"
+FROM green_taxi_trips t
+JOIN taxi_zones z1
+	ON t."PULocationID" = z1."LocationID"
+JOIN taxi_zones z2
+	ON t."DOLocationID" = z2."LocationID"
+WHERE 
+	EXTRACT(MONTH FROM t.lpep_pickup_datetime) = 10
+	AND z1."Zone" = 'East Harlem North'
+
+ORDER BY t."tip_amount" DESC
+LIMIT 1
+
+
+```
 
 
 ## Terraform
@@ -346,10 +367,130 @@ Answers:
 - terraform import, terraform apply -y, terraform destroy
 - teraform init, terraform plan -auto-apply, terraform rm
 - terraform init, terraform run -auto-approve, terraform destroy
-- terraform init, terraform apply -auto-approve, terraform destroy
+- terraform init, terraform apply -auto-approve, terraform destroy ✅
 - terraform import, terraform apply -y, terraform rm
 
 
-## Submitting the solutions
+### Solution 7
 
-* Form for submitting: https://courses.datatalks.club/de-zoomcamp-2025/homework/hw1
+**Initialize Terraform**
+```bash
+terraform init
+```
+This initializes your working directory containing Terraform configuration files and downloads the Google Cloud provider.
+
+**Generate an execution plan**
+```bash
+terraform plan
+```
+This shows what changes Terraform will make to your infrastructure.
+
+**Apply changes**
+```bash
+terraform apply
+```
+This applies the changes required to reach the desired state in your configuration files.
+
+**Auto-approve changes**
+```bash
+terraform apply -auto-approve
+```
+This applies changes without requiring manual confirmation.
+
+**View current state**
+```bash
+terraform state list
+```
+Lists all resources in the Terraform state.
+
+**Show details of a specific resource**
+```bash
+terraform state show google_compute_instance.my_vm
+```
+Displays detailed information about a specific resource.
+
+**Destroy infrastructure**
+```bash
+terraform destroy
+```
+Destroys all resources described in your Terraform configuration.
+
+**Destroy specific resources**
+```bash
+terraform destroy -target=google_compute_instance.my_vm
+```
+Destroys only the specified resource.
+
+**Create a new workspace**
+```bash
+terraform workspace new production
+```
+Creates and switches to a new workspace for environment separation.
+
+**List workspaces**
+```bash
+terraform workspace list
+```
+Shows all available workspaces.
+
+**Select a workspace**
+```bash
+terraform workspace select production
+```
+Switches to the specified workspace.
+
+
+**`main.tf`**
+
+```terraform
+terraform {
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = "6.26.0"
+    }
+  }
+}
+
+provider "google" {
+  credentials = file(var.credentials)
+  project     = var.project
+  region      = var.region
+}
+
+resource "google_bigquery_dataset" "homework_dataset" {
+    dataset_id = var.bigquery_dataset_name
+    friendly_name = "Homework Assignment"
+    description = "This dataset was created using Terraform as HM Week 1"
+    location = "EU"
+    default_table_expiration_ms = 3600000
+}
+
+resource "google_storage_bucket" "bucket" {
+    name = "joyan-homework-assignment"
+    location = "EU"
+}
+```
+
+**`variables.tf`**
+```
+variable "credentials" {
+  description = "My Credentials"
+  default     = "~/.gc/prime-micron-454314-a3-2a9da6d123fd.json"
+}
+
+variable "project" {
+  description = "Project"
+  default     = "prime-micron-454314-a3"
+}
+
+variable "region"{
+    description = "Region"
+    default = "europe-west10"
+}
+
+variable "bigquery_dataset_name" {
+    description = "name of BQ dataset"
+    default = "homework_dataset"
+}
+```
