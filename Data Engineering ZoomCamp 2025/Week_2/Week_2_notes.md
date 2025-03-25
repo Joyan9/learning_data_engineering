@@ -5,7 +5,7 @@ It is a tool that used to automate, manage and coordinates various workflows (a 
 
 Think of it like a conductor of an orchestra, making sure all components perform in harmony, following a predefined sequence or set of rules. Whether you're dealing with data pipelines, microservices, or CI/CD systems, an orchestrator ensures everything runs reliably without manual intervention.
 
-![Automation versus Orchestration](image.png)
+![Automation versus Orchestration](https://kestra.io/blogs/2024-09-18-what-is-an-orchestrator/automation_orchestration.png)
 Source: https://kestra.io/blogs/2024-09-18-what-is-an-orchestrator
 
 ### Why Use an Orchestrator?
