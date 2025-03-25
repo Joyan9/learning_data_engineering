@@ -1,6 +1,8 @@
 # Understanding Different Data Stores
 
-Data Stores are simply data repositories - choosing the right data store is a key design decision. For instance, if you choose to use NoSQL type of database for handling banking transactions it could lead to issues like incorrect balances, multiple transactions colliding etc.
+Data Stores are simply data repositories - choosing the right data store is a key design decision. 
+
+For instance, if you choose to use NoSQL type of database for handling banking transactions it could lead to issues like incorrect balances, multiple transactions colliding etc.
 
 The term ***polyglot persistence*** is used to describe solutions that use a mix of data store technologies. Data heterogeneity means that a single data store is usually not the best approach. Instead, it's often better to store different types of data in different data stores, each focused toward a specific workload or usage pattern
 
@@ -111,6 +113,7 @@ The term ***polyglot persistence*** is used to describe solutions that use a mix
 ## 6. Column-family databases
   - You can think of a column-family database as holding tabular data with rows and columns, but the columns are divided into groups known as column families.
   - column family holds a set of columns that are logically related together
+  - It is analogous to vertical partitioning
  
 ### Workload
   - Most column-family databases perform write operations extremely quickly.
@@ -129,3 +132,58 @@ The term ***polyglot persistence*** is used to describe solutions that use a mix
   - Recommendations
   - Sensory data
   - Social media analytics
+
+
+## 7. Search Engine Databases
+  - A search engine database allows applications to search for information held in external data stores.
+  - A search engine database can index massive volumes of data and provide near real-time access to these indexes.
+
+### Workload
+  - Data indexes from multiple sources and services.
+  - Queries are ad-hoc and can be complex.
+  - Full text search is required.
+  - Ad hoc self-service query is required.
+
+### Data Type  
+  - Semi-structured or unstructured text
+  - Text with reference to structured data
+
+### Example Use Cases
+  - Product catalogs
+  - Site search
+  - Logging
+
+
+## 8. Time series databases
+  - Data is organised by time
+  - typically collect large amounts of data in real time from a large number of sources
+
+### Workload
+  - Records are generally appended sequentially in time order.
+  - An overwhelming proportion of operations (95-99%) are writes.
+  - Updates are rare.
+  - Deletes occur in bulk, and are made to contiguous blocks or records.
+  - Data is read sequentially in either ascending or descending time order, often in parallel.
+
+### Data Type  
+  - A timestamp is used as the primary key and sorting mechanism.
+
+### Example Use Cases
+  - Sensor or other IoT data.
+
+
+## 9. Object storage
+  - Optimised for storing large binary objects (images, videos, files, documents) 
+
+### Workload
+  - Identified by key.
+  - Content is typically an asset such as a delimiter, image, or video file.
+  - Content must be durable and external to any application tier.
+
+### Data Type  
+  - Data size is large and Value is opaque.
+
+### Example Use Cases
+  - Images, videos, office documents, PDFs
+  - Static HTML, JSON, CSS
+  - DB Backups
