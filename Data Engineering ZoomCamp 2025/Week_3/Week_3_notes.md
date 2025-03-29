@@ -98,11 +98,10 @@ CLUSTER BY clustering_column;
 - **Auto Re-Clustering** occurs in the background (free).  
 - **Query Cost Estimation** is not accurate before execution.  
 - **Up to 4 columns** can be used for clustering.  
-- **Order of clustered columns impacts performance**—query filter order should match clustered column order.
+- **Order of clustered columns impacts performance** query filter order should match clustered column order.
 
----
 
-# **BigQuery Best Practices for Cost Reduction**  
+## **BigQuery Best Practices for Cost Reduction**  
 
 ### **1️⃣ Avoid `SELECT *`**  
  Inefficient:  
@@ -147,4 +146,39 @@ FROM `mydataset.raw_purchases`
 GROUP BY user_id;
 ```
 Subsequent queries can use `temp_agg`, reducing cost.
+
+
+## **BigQuery Internal Working**
+
+![bq_internal_working](./bq_internals.png)
+
+> *A good understanding of how Google BigQuery architecture works is useful when implementing various BigQuery best-practices including controlling costs, optimizing query performance, and optimizing storage*
+
+
+### **Key Architectural Components:**
+
+1. **Separation of Storage & Compute:**
+   - **Storage (Colossus + Capacitor)**: 
+     - Data is stored in **Colossus**, a distributed file system.
+     - Uses **Capacitor**, a columnar storage format that provides high compression and fast scan speeds.
+     - Data is automatically sharded and replicated across data centers.
+
+   - **Compute (Borg + Dremel)**:
+     - Uses **Borg**, Google's cluster management system, to allocate compute resources dynamically.
+     - **Dremel Engine** processes SQL queries using a multi-level serving tree for parallel execution.
+
+2. **Query Execution Model:**
+   - Queries are processed using a hierarchical **multi-level serving tree**:
+     - **Root server**: Receives queries and distributes them.
+     - **Mixers**: Aggregate results from multiple **Leaf nodes**.
+     - **Leaf nodes**: Read data from Colossus, perform filtering, and process SQL operations.
+
+3. **Networking (Jupiter Network):**
+   - Google’s **Jupiter Network** provides ultra-fast data transfer between storage and compute layers.
+   - Capable of handling 1 Petabit/sec bandwidth.
+
+4. **Execution Optimization:**
+   - Queries are rewritten to optimize performance (e.g., stripping unnecessary clauses).
+   - Query slots (execution units) are automatically allocated based on complexity.
+   - Operations like **JOINs** and **GROUP BY** may trigger data shuffling, which can slow down performance.
 
