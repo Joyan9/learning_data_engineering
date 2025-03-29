@@ -200,3 +200,5 @@ It is best practice in Big Query to always cluster your data:
 ## (Bonus: Not worth points) Question 9:
 No Points: Write a `SELECT count(*)` query FROM the materialized table you created. How many bytes does it estimate will be read? Why?
 
+> This is because BQ stores meta data about tables (Number of rows, table size in bytes, etc)
+
