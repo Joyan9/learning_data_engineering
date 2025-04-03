@@ -36,6 +36,7 @@ select
     {{ get_payment_type_description("payment_type") }} as payment_type_description
 from tripdata
 where rn = 1
+and TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) BETWEEN TIMESTAMP("2019-01-01") AND TIMESTAMP("2020-12-31")
 
 -- dbt build --select <model_name> --vars '{'is_test_run': 'false'}'
 {% if var('is_test_run', default=true) %}

@@ -1,0 +1,12 @@
+
+services:
+  dbt-bq-dtc:
+    build:
+      context: .
+      target: dbt-bigquery
+    image: dbt/bigquery
+    volumes:
+      - .:/usr/app
+      - ~/.dbt/:/root/.dbt/
+      - C:/Users/HP/Downloads/prime-micron-454314-a3-2a9da6d123fd.json:/.google/credentials/google_credentials.json
+    network_mode: host
