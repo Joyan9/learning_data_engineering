@@ -1,7 +1,7 @@
-## Module 4 Homework
+# Module 4 Homework
 
 
-### Question 1: Understanding dbt model resolution
+## Question 1: Understanding dbt model resolution
 
 Provided you've got the following sources.yaml
 ```yaml
@@ -30,16 +30,18 @@ from {{ source('raw_nyc_tripdata', 'ext_green_taxi' ) }}
 
 - `select * from dtc_zoomcamp_2025.raw_nyc_tripdata.ext_green_taxi`
 - `select * from dtc_zoomcamp_2025.my_nyc_tripdata.ext_green_taxi`
-- `select * from myproject.raw_nyc_tripdata.ext_green_taxi`
-- `select * from myproject.my_nyc_tripdata.ext_green_taxi` ✅
+- `select * from myproject.raw_nyc_tripdata.ext_green_taxi` ✅
+- `select * from myproject.my_nyc_tripdata.ext_green_taxi` 
 - `select * from dtc_zoomcamp_2025.raw_nyc_tripdata.green_taxi`
 
-#### Solution 1
+### Solution 1
 In the sources.yml file, the name of the source is `raw_nyc_tripdata`, that is the first argument in the `{{source()}}` macro.
 
 Secondly, 
-`database` ➡ BigQuery Project
-`schema` ➡ BigQuery Dataset where the data is stored
+```
+database should point to ➡ BigQuery Project
+schema should point to ➡ BigQuery Dataset where the data is stored
+```
 
 Dynamic Variables
 ```
@@ -49,15 +51,14 @@ schema:   "{{ env_var('DBT_BIGQUERY_SOURCE_DATASET', 'raw_nyc_tripdata') }}"
 
 This checks the environment variables `DBT_BIGQUERY_PROJECT` and `DBT_BIGQUERY_SOURCE_DATASET` respectively to see if it has any value else it uses the default passed `dtc_zoomcamp_2025` and `raw_nyc_tripdata`
 
-Since here we have passed the env variables, the code will compile using those
+Note here that only `DBT_BIGQUERY_PROJECT` has a value but `DBT_BIGQUERY_SOURCE_DATASET` has not been assigned, therefore, the code will compile as
 
 ```
 database: myproject
-schema: my_nyc_tripdata
+schema: raw_nyc_tripdata
 ```
 
-
-### Question 2: dbt Variables & Dynamic Models
+## Question 2: dbt Variables & Dynamic Models
 
 Say you have to modify the following dbt_model (`fct_recent_taxi_trips.sql`) to enable Analytics Engineers to dynamically control the date range. 
 
@@ -78,7 +79,7 @@ What would you change to accomplish that in a such way that command line argumen
 - Update the WHERE clause to `pickup_datetime >= CURRENT_DATE - INTERVAL '{{ var("days_back", env_var("DAYS_BACK", "30")) }}' DAY` ✅
 - Update the WHERE clause to `pickup_datetime >= CURRENT_DATE - INTERVAL '{{ env_var("DAYS_BACK", var("days_back", "30")) }}' DAY`
 
-#### Solution 2
+### Solution 2
 
 * Update the WHERE clause to `pickup_datetime >= CURRENT_DATE - INTERVAL '{{ var("days_back", env_var("DAYS_BACK", "30")) }}' DAY`
 
@@ -93,7 +94,7 @@ When using this approach:
 - If neither exists, it will use the default value of 30
 
 
-### Question 3: dbt Data Lineage and Execution
+## Question 3: dbt Data Lineage and Execution
 
 Considering the data lineage below **and** that taxi_zone_lookup is the **only** materialization build (from a .csv seed file):
 
@@ -107,7 +108,7 @@ Select the option that does **NOT** apply for materializing `fct_taxi_monthly_zo
 - `dbt run --select +models/core/`
 - `dbt run --select models/staging/+`
 
-#### Solution 3
+### Solution 3
 The option that **does NOT apply** for materializing `fct_taxi_monthly_zone_revenue` is:  
 **`dbt run --select models/staging/+`**
 
@@ -132,7 +133,7 @@ The option that **does NOT apply** for materializing `fct_taxi_monthly_zone_reve
 - It **does not include `core/` models**, so `fct_taxi_monthly_zone_revenue` **won’t be materialized**.
 
 
-### Question 4: dbt Macros and Jinja
+## Question 4: dbt Macros and Jinja
 
 Consider you're dealing with sensitive data (e.g.: [PII](https://en.wikipedia.org/wiki/Personal_data)), that is **only available to your team and very selected few individuals**, in the `raw layer` of your DWH (e.g: a specific BigQuery dataset or PostgreSQL schema), 
 
@@ -169,7 +170,7 @@ That all being said, regarding macro above, **select all statements that are tru
 - When using `stg`, it materializes in the dataset defined in `DBT_BIGQUERY_STAGING_DATASET`, or defaults to `DBT_BIGQUERY_TARGET_DATASET`
 - When using `staging`, it materializes in the dataset defined in `DBT_BIGQUERY_STAGING_DATASET`, or defaults to `DBT_BIGQUERY_TARGET_DATASET`
 
-#### Solution 4
+### Solution 4
 
 Except the second statement
 *Setting a value for `DBT_BIGQUERY_STAGING_DATASET` env var is mandatory, or it'll fail to compile* all other statements are TRUE.
@@ -213,7 +214,7 @@ So, without any further do, let's get started...
 You might want to add some new dimensions `year` (e.g.: 2019, 2020), `quarter` (1, 2, 3, 4), `year_quarter` (e.g.: `2019/Q1`, `2019-Q2`), and `month` (e.g.: 1, 2, ..., 12), **extracted from pickup_datetime**, to your `fct_taxi_trips` OR `dim_taxi_trips.sql` models to facilitate filtering your queries
 
 
-### Question 5: Taxi Quarterly Revenue Growth
+## Question 5: Taxi Quarterly Revenue Growth
 
 1. Create a new model `fct_taxi_trips_quarterly_revenue.sql`
 2. Compute the Quarterly Revenues for each year for based on `total_amount`
@@ -231,7 +232,7 @@ Considering the YoY Growth in 2020, which were the yearly quarters with the best
 - green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q1, worst: 2020/Q2} ✅
 - green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q3, worst: 2020/Q4}
 
-#### Solution 5
+### Solution 5
 fct_taxi_trips_quarterly_revenue model
 
 ```sql
@@ -312,7 +313,7 @@ FROM
   `prime-micron-454314-a3.zoomcamp_dbt.fct_taxi_trips_quarterly_revenue`
 ```
 
-### Question 6: P97/P95/P90 Taxi Monthly Fare
+## Question 6: P97/P95/P90 Taxi Monthly Fare
 
 1. Create a new model `fct_taxi_trips_monthly_fare_p95.sql`
 2. Filter out invalid entries (`fare_amount > 0`, `trip_distance > 0`, and `payment_type_description in ('Cash', 'Credit card')`)
@@ -326,7 +327,7 @@ Now, what are the values of `p97`, `p95`, `p90` for Green Taxi and Yellow Taxi, 
 - green: {p97: 40.0, p95: 33.0, p90: 24.5}, yellow: {p97: 31.5, p95: 25.5, p90: 19.0}
 - green: {p97: 55.0, p95: 45.0, p90: 26.5}, yellow: {p97: 52.0, p95: 25.5, p90: 19.0}
 
-#### Solution 6
+### Solution 6
 The goal here is to find the fare amounts at specific percentiles (97th, 95th, and 90th) for each taxi service type in April 2020.
 
 **fct_taxi_trips_monthly_fare_p95 Model**
@@ -397,7 +398,7 @@ FROM (
 ORDER BY service_type
 ```
 
-### Question 7: Top #Nth longest P90 travel time Location for FHV
+## Question 7: Top #Nth longest P90 travel time Location for FHV
 
 Prerequisites:
 * Create a staging model for FHV Data (2019), and **DO NOT** add a deduplication step, just filter out the entries where `where dispatching_base_num is not null`
@@ -411,18 +412,142 @@ Now...
 
 For the Trips that **respectively** started from `Newark Airport`, `SoHo`, and `Yorkville East`, in November 2019, what are **dropoff_zones** with the 2nd longest p90 trip_duration ?
 
-- LaGuardia Airport, Chinatown, Garment District
+- LaGuardia Airport, Chinatown, Garment District ✅
 - LaGuardia Airport, Park Slope, Clinton East
 - LaGuardia Airport, Saint Albans, Howard Beach
 - LaGuardia Airport, Rosedale, Bath Beach
 - LaGuardia Airport, Yorkville East, Greenpoint
 
+### Solution 7
 
-## Submitting the solutions
+**stg_fhv_tripdata Model**
 
-* Form for submitting: https://courses.datatalks.club/de-zoomcamp-2025/homework/hw4
+```sql
+-- stg_fhv_tripdata
+-- filter out the entries where where dispatching_base_num is not null
+
+with 
+source as (
+    select * from {{ source('staging', 'fhv_tripdata') }}
+    where dispatching_base_num is not null
+)   
+
+select 
+    MD5(CONCAT(CAST(dispatching_base_num AS STRING), 
+               CAST(pickup_datetime AS STRING), 
+               CAST(pickup_location_id AS STRING),
+               CAST(dropoff_location_id AS STRING)
+               )) as tripid,
+    SAFE_CAST(dispatching_base_num as STRING) as dispatching_base_num,
+    SAFE_CAST(pickup_datetime as TIMESTAMP) as pickup_datetime,
+    SAFE_CAST(dropoff_datetime as TIMESTAMP) as dropoff_datetime,
+    SAFE_CAST(pickup_location_id as INTEGER) as pickup_locationid,
+    SAFE_CAST(dropoff_location_id as INTEGER) as dropoff_locationid,
+    SAFE_CAST(shared_ride_flag as INTEGER) as shared_ride_flag,
+    SAFE_CAST(affiliated_base_number as INTEGER) as affiliated_base_number
+from source
+```
+
+**dim_fhv_trips Model**
+
+```sql
+-- dim_fhv_trips
+-- joining with dim_zones
+-- Add new dimensions year (e.g.: 2019) and month (e.g.: 1, 2, ..., 12), based on pickup_datetime
+
+{{
+    config(
+        materialized='table'
+    )
+}}
+
+with fhv_tripdata as (
+    select *
+    from {{ ref('stg_fhv_tripdata') }}
+), 
+dim_zones as (
+    select * from {{ ref('dim_zones') }}
+    where borough != 'Unknown'
+)
+select 
+    fhv_tripdata.tripid, 
+    fhv_tripdata.pickup_locationid, 
+    pickup_zone.borough as pickup_borough, 
+    pickup_zone.zone as pickup_zone, 
+    fhv_tripdata.dropoff_locationid,
+    dropoff_zone.borough as dropoff_borough, 
+    dropoff_zone.zone as dropoff_zone,  
+    fhv_tripdata.pickup_datetime, 
+    EXTRACT(YEAR FROM fhv_tripdata.pickup_datetime) as year,
+    EXTRACT(MONTH FROM fhv_tripdata.pickup_datetime) as month,
+    fhv_tripdata.dropoff_datetime, 
+    fhv_tripdata.shared_ride_flag,
+    fhv_tripdata.affiliated_base_number
+from fhv_tripdata
+    inner join dim_zones as pickup_zone
+        on fhv_tripdata.pickup_locationid = pickup_zone.locationid
+    inner join dim_zones as dropoff_zone
+        on fhv_tripdata.dropoff_locationid = dropoff_zone.locationid
+```
+
+**fct_fhv_monthly_zone_traveltime_p90 Model**
+
+```sql
+-- fct_fhv_monthly_zone_traveltime_p90
+-- For each record in dim_fhv_trips.sql, compute the timestamp_diff in seconds between dropoff_datetime and pickup_datetime 
+-- we'll call it trip_duration for this exercise
+-- Compute the continous p90 of trip_duration partitioning by year, month, pickup_location_id, and dropoff_location_id
+{{ config(
+    materialized='table',
+    partition_by = {
+        "field": "pickup_datetime",
+        "data_type": "datetime",
+        "granularity": "day",
+    }
+) }}
 
 
-## Solution 
+with dim_fhv_trips as (
+    select
+        *,
+        timestamp_diff(dropoff_datetime, pickup_datetime, second) as trip_duration
+        
+    from {{ ref('dim_fhv_trips') }}
+),
+-- Get the p90 of trip_duration for each month, pickup_location_id, and dropoff_location_id
+percentiles as (
+    select
+        *,
+        PERCENTILE_CONT(trip_duration, 0.9)
+        OVER(PARTITION BY year, month, pickup_locationid, dropoff_locationid) as p90_trip_duration
+    from dim_fhv_trips
+)
 
-* To be published after deadline    
+select * from percentiles
+
+```
+
+**Analysis Query**
+- First creates a CTE (distinct_zones) that groups by pickup_zone and dropoff_zone to eliminate duplicates
+
+- Next we assign a rank to the trip duration using `DENSE_RANK()`
+
+```sql
+WITH distinct_zones AS (
+  SELECT
+      pickup_zone,
+      dropoff_zone,
+      MAX(p90_trip_duration) as p90_trip_duration
+    FROM `prime-micron-454314-a3.zoomcamp_dbt.fct_fhv_monthly_zone_traveltime_p90`
+    WHERE 
+      TIMESTAMP_TRUNC(pickup_datetime, DAY) BETWEEN TIMESTAMP("2019-11-01") AND TIMESTAMP("2019-11-30")
+      AND pickup_zone IN ('Newark Airport', 'SoHo', 'Yorkville East')
+    GROUP BY pickup_zone, dropoff_zone
+),
+
+SELECT
+  *,
+  DENSE_RANK() OVER(PARTITION BY pickup_zone ORDER BY p90_trip_duration DESC) as rank
+FROM distinct_zones
+  QUALIFY rank = 2 -- you can filter on window function output using qualify in BQ
+```
