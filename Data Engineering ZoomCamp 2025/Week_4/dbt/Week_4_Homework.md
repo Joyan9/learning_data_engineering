@@ -228,9 +228,89 @@ Considering the YoY Growth in 2020, which were the yearly quarters with the best
 - green: {best: 2020/Q2, worst: 2020/Q1}, yellow: {best: 2020/Q2, worst: 2020/Q1}
 - green: {best: 2020/Q2, worst: 2020/Q1}, yellow: {best: 2020/Q3, worst: 2020/Q4}
 - green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q2, worst: 2020/Q1}
-- green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q1, worst: 2020/Q2}
+- green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q1, worst: 2020/Q2} ✅
 - green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q3, worst: 2020/Q4}
 
+#### Solution 5
+fct_taxi_trips_quarterly_revenue model
+
+```sql
+{{
+    config(
+        materialized='table'
+    )
+}}
+
+with green_tripdata as (
+    select *, 
+        'Green' as service_type
+    from {{ ref('stg_green_tripdata') }}
+), 
+yellow_tripdata as (
+    select *, 
+        'Yellow' as service_type
+    from {{ ref('stg_yellow_tripdata') }}
+), 
+trips_unioned as (
+    select * from green_tripdata
+    union all 
+    select * from yellow_tripdata
+), 
+dim_zones as (
+    select * from {{ ref('dim_zones') }}
+    where borough != 'Unknown'
+)
+select 
+    trips_unioned.service_type,
+    EXTRACT(YEAR FROM pickup_datetime) as year,
+    EXTRACT(QUARTER FROM pickup_datetime) as quarter,
+    FORMAT("%d-Q%d", EXTRACT(YEAR FROM pickup_datetime), EXTRACT(QUARTER FROM pickup_datetime)) AS year_quarter,
+    SUM(trips_unioned.fare_amount) as fare_amount,
+    SUM(trips_unioned.extra) as extra, 
+    SUM(trips_unioned.mta_tax) as mta_tax,
+    SUM(trips_unioned.tip_amount) as tip_amount,
+    SUM(trips_unioned.tolls_amount) as tolls_amount, 
+    SUM(trips_unioned.ehail_fee) as ehail_fee, 
+    SUM(trips_unioned.improvement_surcharge) as improvement_surcharge, 
+    SUM(trips_unioned.total_amount) as total_amount, 
+from trips_unioned
+inner join dim_zones as pickup_zone
+on trips_unioned.pickup_locationid = pickup_zone.locationid
+inner join dim_zones as dropoff_zone
+on trips_unioned.dropoff_locationid = dropoff_zone.locationid
+group by 1, 2, 3, 4
+order by 1, 2, 3, 4
+
+
+-- dbt build --select <model_name> --vars '{'is_test_run': 'false'}'
+{% if var('is_test_run', default=true) %}
+
+  limit 100
+
+{% endif %}
+
+```
+
+
+**Y-o-Y Analysis**
+
+```sql
+SELECT 
+  service_type,
+  year,
+  quarter,
+  year_quarter,
+  total_amount,
+  ROUND(
+    (
+      (total_amount - LAG(total_amount, 4) OVER (PARTITION BY service_type ORDER BY year, quarter)) /
+      LAG(total_amount, 4) OVER (PARTITION BY service_type ORDER BY year, quarter)
+    ) * 100, 2
+  ) AS yoy_growth_percentage
+
+FROM 
+  `prime-micron-454314-a3.zoomcamp_dbt.fct_taxi_trips_quarterly_revenue`
+```
 
 ### Question 6: P97/P95/P90 Taxi Monthly Fare
 
@@ -241,11 +321,81 @@ Considering the YoY Growth in 2020, which were the yearly quarters with the best
 Now, what are the values of `p97`, `p95`, `p90` for Green Taxi and Yellow Taxi, in April 2020?
 
 - green: {p97: 55.0, p95: 45.0, p90: 26.5}, yellow: {p97: 52.0, p95: 37.0, p90: 25.5}
-- green: {p97: 55.0, p95: 45.0, p90: 26.5}, yellow: {p97: 31.5, p95: 25.5, p90: 19.0}
+- green: {p97: 55.0, p95: 45.0, p90: 26.5}, yellow: {p97: 31.5, p95: 25.5, p90: 19.0} ✅
 - green: {p97: 40.0, p95: 33.0, p90: 24.5}, yellow: {p97: 52.0, p95: 37.0, p90: 25.5}
 - green: {p97: 40.0, p95: 33.0, p90: 24.5}, yellow: {p97: 31.5, p95: 25.5, p90: 19.0}
 - green: {p97: 55.0, p95: 45.0, p90: 26.5}, yellow: {p97: 52.0, p95: 25.5, p90: 19.0}
 
+#### Solution 6
+The goal here is to find the fare amounts at specific percentiles (97th, 95th, and 90th) for each taxi service type in April 2020.
+
+**fct_taxi_trips_monthly_fare_p95 Model**
+
+```sql
+{{ config(
+    materialized='table'
+) }}
+
+with green_tripdata as (
+    select *, 'Green' as service_type 
+    from {{ ref('stg_green_tripdata') }}
+    where fare_amount > 0 
+      and trip_distance > 0 
+      and payment_type_description in ('Cash', 'Credit card')
+      and TIMESTAMP_TRUNC(pickup_datetime, DAY) BETWEEN TIMESTAMP("2019-01-01") AND TIMESTAMP("2020-12-31")
+),
+
+yellow_tripdata as (
+    select *, 'Yellow' as service_type 
+    from {{ ref('stg_yellow_tripdata') }}
+    where fare_amount > 0 
+      and trip_distance > 0 
+      and payment_type_description in ('Cash', 'Credit card')
+      and TIMESTAMP_TRUNC(pickup_datetime, DAY) BETWEEN TIMESTAMP("2019-01-01") AND TIMESTAMP("2020-12-31")
+),
+
+trips_unioned as (
+    select * from green_tripdata 
+    union all 
+    select * from yellow_tripdata
+)
+
+-- Note: No aggregation here - we keep individual trip records
+select
+    service_type,
+    EXTRACT(YEAR FROM pickup_datetime) as year,
+    EXTRACT(MONTH FROM pickup_datetime) as month,
+    FORMAT("%d-%02d", EXTRACT(YEAR FROM pickup_datetime), EXTRACT(MONTH FROM pickup_datetime)) AS year_month,
+    fare_amount
+from trips_unioned
+```
+
+
+**Query to Percentile Values**
+
+```sql
+-- Query to calculate P97, P95, and P90 for Green and Yellow taxis in April 2020
+WITH percentiles AS (
+  SELECT
+    service_type,
+    PERCENTILE_CONT(fare_amount, 0.97) OVER(PARTITION BY service_type) AS p97,
+    PERCENTILE_CONT(fare_amount, 0.95) OVER(PARTITION BY service_type) AS p95,
+    PERCENTILE_CONT(fare_amount, 0.90) OVER(PARTITION BY service_type) AS p90
+  FROM `prime-micron-454314-a3.zoomcamp_dbt.fct_taxi_trips_monthly_fare_p95`
+  WHERE year = 2020 AND month = 4
+)
+
+SELECT
+  service_type,
+  ROUND(p97, 1) AS p97,
+  ROUND(p95, 1) AS p95,
+  ROUND(p90, 1) AS p90
+FROM (
+  SELECT DISTINCT service_type, p97, p95, p90
+  FROM percentiles
+)
+ORDER BY service_type
+```
 
 ### Question 7: Top #Nth longest P90 travel time Location for FHV
 

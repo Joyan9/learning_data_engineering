@@ -25,6 +25,8 @@ dim_zones as (
 )
 select 
     trips_unioned.service_type,
+    EXTRACT(YEAR FROM pickup_datetime) as year,
+    EXTRACT(QUARTER FROM pickup_datetime) as quarter,
     FORMAT("%d-Q%d", EXTRACT(YEAR FROM pickup_datetime), EXTRACT(QUARTER FROM pickup_datetime)) AS year_quarter,
     SUM(trips_unioned.fare_amount) as fare_amount,
     SUM(trips_unioned.extra) as extra, 
@@ -39,8 +41,8 @@ inner join dim_zones as pickup_zone
 on trips_unioned.pickup_locationid = pickup_zone.locationid
 inner join dim_zones as dropoff_zone
 on trips_unioned.dropoff_locationid = dropoff_zone.locationid
-group by 1, 2
-order by 1, 2
+group by 1, 2, 3, 4
+order by 1, 2, 3, 4
 
 
 -- dbt build --select <model_name> --vars '{'is_test_run': 'false'}'
