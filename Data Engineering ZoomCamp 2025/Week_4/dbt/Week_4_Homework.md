@@ -1,5 +1,9 @@
 # Module 4 Homework
 
+> **Note to Fellow Students** 
+
+> I would highly appreciate your feedback or alternative approaches to improve these solutions.
+If you spot any errors or have a more elegant way to solve these problems, please share! 
 
 ## Question 1: Understanding dbt model resolution
 
@@ -175,8 +179,6 @@ That all being said, regarding macro above, **select all statements that are tru
 Except the second statement
 *Setting a value for `DBT_BIGQUERY_STAGING_DATASET` env var is mandatory, or it'll fail to compile* all other statements are TRUE.
 
-`DBT_BIGQUERY_STAGING_DATASET` env var is **not** mandatory as it has default value argument passed.
-
 **Explanation of the Macro**
 The `resolve_schema_for` macro determines which database schema/dataset to use based on model type:
 
@@ -191,7 +193,8 @@ The `resolve_schema_for` macro determines which database schema/dataset to use b
 {%- endmacro %}
 ```
 
-Key components:
+**Key components of the Macro**
+
 1. Defines two environment variables:
    - `DBT_BIGQUERY_TARGET_DATASET`: For core/service layer models
    - `DBT_BIGQUERY_STAGING_DATASET`: For staging models
@@ -200,8 +203,6 @@ Key components:
    - If model_type is 'core', uses `DBT_BIGQUERY_TARGET_DATASET`
    - Otherwise (for staging/any other type), uses `DBT_BIGQUERY_STAGING_DATASET`
    - If `DBT_BIGQUERY_STAGING_DATASET` isn't set, falls back to `DBT_BIGQUERY_TARGET_DATASET`
-
-
 
 
 ## Serious SQL
