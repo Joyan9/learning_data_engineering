@@ -164,3 +164,140 @@ def test_phone_format_variations(phone_input, expected_output):
 ```
 
 ## Mocking
+- Mocking is a way to create substitutes for external dependencies, common examples include database connection, API response. 
+
+- By using mocks you can truly isolate your tests and run them without any dependencies
+
+- Mocks can also be used to increase your test coverage especially for code blocks like the `except` or `else` - we can create mocks to follow a certain execution path like purposely triggering the except block.
+
+### Using `unittest.mock` Library
+
+```python
+from unittest.mock import Mock
+
+# create mock instance
+mock = Mock()
+
+# the patch decorator replaces an object with the mock during the test
+@patch('your_module.create_connection')
+def test_database_function(mock_create_conn):
+    # The real create_connection is now replaced with mock_create_conn
+    # Configure the mock
+    mock_create_conn.return_value = my_fake_connection
+    
+    # Run your function that internally calls create_connection()
+    result = function_under_test()
+    
+    # Your function used the mock instead of the real connection
+```
+
+- The mock object can generate attributes on the fly - for instance if you create a mock for the json library and call `mock.dumps()` then mock will create that method, which basically is another mock
+
+#### Mock Object Assertion Methods
+The mock object keeps track of how many times it has been called and by whom. This info can be useful and can be used for assertion tests as well
+
+1. `assert_called()` - ensures that you called the mock method
+2. `assert_called_once()` - checks that you called the method exactly once
+3. `assert_not_called()` - ensures that you did not call the mock method
+4. `.assert_called_with(*args, **kwargs)` - Ensures that you called the mocked method at least once with the specified arguments.
+5. `.assert_called_once_with(*args, **kwargs)` - Checks that you called the mocked method exactly one time with the specified arguments.
+
+
+```python
+from unittest.mock import Mock
+# create json library mock
+json = Mock()
+json.loads('{"key": "value"}')
+
+# Number of times you called loads():
+json.loads.call_count
+
+
+# The last loads() call:
+json.loads.call_args
+
+
+# List of loads() calls:
+json.loads.call_args_list
+
+
+# List of calls to json's methods (recursively):
+json.method_calls
+```
+
+#### Step-by-Step Mocking Guide
+
+1. **Identify what to mock**: Usually external services like databases, APIs, or file systems
+2. **Create mock objects**: Use `MagicMock()` to create objects that record how they're used
+3. **Set up return values**: Tell mocks what to return using `.return_value`
+4. **Patch the real thing**: Use `@patch` decorator or `with patch()` context manager
+5. **Assert on results**: Check your function returns the right values
+6. **Assert on interactions**: Verify your code used the mocks correctly
+
+#### Common Mocking Patterns in Data Engineering
+
+**1. Mocking Database Connections**
+```python
+@patch('your_module.database_connection')
+def test_database_connection(mock_create_conn):
+    # create a mock object
+    mock_cursor = MagicMock()
+    # suppose the db conn has a method fetchall
+    mock_cursor.fetchall.return_value = [('data1',), ('data2',)]
+    
+    # mock for database connection object
+    mock_conn = MagicMock()
+    mock_conn.cursor.return_value = mock_cursor
+
+    # Make create_connection return our mock
+    mock_create_conn.return_value = mock_conn
+    
+    # Run function to test
+    result = your_database_function()
+    
+    # Assertions
+    assert len(result) == 2
+```
+
+**2. Mocking File Operations**
+```python
+# replace the built-in open method
+@patch('builtins.open')
+def test_file_reading(mock_open):
+
+    # Mock file handler
+    mock_file = MagicMock()
+    mock_file.__enter__.return_value.readlines.return_value = [
+        'header1,header2\n',
+        'value1,value2\n'
+    ]
+    mock_open.return_value = mock_file
+
+    # Run function that reads file
+    result = read_csv_file('dummy_path.csv')
+    
+    # Assertions
+    assert len(result) == 1
+    assert result[0]['header1'] == 'value1'
+```
+
+**3. Mocking API Calls**
+```python
+@patch('requests.get')
+def test_api_call(mock_get):
+    # Setup mock response
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {'data': [{'id': 1, 'name': 'test'}]}
+    mock_get.return_value = mock_response
+    
+    # Call function that uses the API
+    result = fetch_api_data('https://example.com/api')
+    
+    # Assertions
+    assert len(result) == 1
+    assert result[0]['name'] == 'test'
+    
+    # Verify the API was called with correct parameters
+    mock_get.assert_called_with('https://example.com/api')
+```
