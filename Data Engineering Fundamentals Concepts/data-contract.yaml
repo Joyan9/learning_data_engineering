@@ -1,0 +1,108 @@
+version: 1.0.0
+kind: DataContract
+id: 7a9bd53e-c1f4-48d0-a822-56138cbc5e93
+status: active
+name: customer_profiles
+apiVersion: v3.0.2
+description: "Basic customer profile information for retail application"
+
+# Data owners and stakeholders
+owner:
+  team: Customer Data Team
+  email: customer-data@example.com
+  
+# Schema definition
+schema:
+  - name: customers
+    logicalType: object
+    physicalType: table
+    physicalName: tbl_customers
+    description: "Contains core customer information including contact details and preferences"
+    dataGranularityDescription: "One row per unique customer"
+    tags: ['retail', 'customer']
+    properties:
+      - name: customer_id
+        businessName: "Customer Identifier"
+        logicalType: string
+        physicalType: varchar(20)
+        description: "Unique identifier for each customer"
+        required: true
+        unique: true
+        primaryKey: true
+        primaryKeyPosition: 1
+        criticalDataElement: true
+        examples:
+          - "CUST0001"
+          - "CUST1234"
+      
+      - name: full_name
+        businessName: "Customer Full Name"
+        logicalType: string
+        physicalType: varchar(100)
+        description: "Customer's full name as provided at registration"
+        required: true
+        criticalDataElement: true
+        examples:
+          - "John Smith"
+          - "Emma Johnson"
+      
+      - name: email
+        businessName: "Email Address"
+        logicalType: string
+        physicalType: varchar(120)
+        logicalTypeOptions:
+          format: "email"
+        description: "Primary email address for communication"
+        required: true
+        unique: true
+        classification: "restricted"
+        examples:
+          - "john.smith@example.com"
+      
+      - name: signup_date
+        businessName: "Account Creation Date"
+        logicalType: date
+        physicalType: date
+        logicalTypeOptions:
+          format: "yyyy-MM-dd"
+        description: "Date when customer created their account"
+        required: true
+        partitioned: true
+        partitionKeyPosition: 1
+        examples:
+          - "2024-05-01"
+      
+      - name: loyalty_tier
+        businessName: "Loyalty Program Tier"
+        logicalType: string
+        physicalType: varchar(20)
+        description: "Customer's current tier in the loyalty program"
+        required: false
+        examples:
+          - "Bronze"
+          - "Silver"
+          - "Gold"
+          - "Platinum"
+      
+      - name: preferences
+        businessName: "Customer Preferences"
+        logicalType: object
+        description: "Customer's communication and shopping preferences"
+        properties:
+          - name: marketing_emails
+            logicalType: boolean
+            physicalType: boolean
+            description: "Whether customer has opted in for marketing emails"
+            required: true
+            examples:
+              - true
+              - false
+          
+          - name: preferred_categories
+            logicalType: array
+            description: "Product categories the customer is interested in"
+            items:
+              logicalType: string
+            examples:
+              - ["Electronics", "Books"]
+              - ["Clothing", "Sports", "Outdoors"]
