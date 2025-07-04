@@ -55,4 +55,8 @@ The datelist table becomes an efficient foundation for calculating:
 2. Storage size per row increases since the the list can contain years worth of data
 3. Increased query complexity
 
-## **[Modelling Snowplow Event Data - Holistics.io](https://www.holistics.io/books/setup-analytics/data-modeling-layer-and-concepts/)**
+## **[Modelling Snowplow Event Data - Holistics.io](https://www.holistics.io/books/setup-analytics/modeling-example-a-real-world-use-case/)**
+Initial decision to model the data was based on the following factors
+- time vost to create a new model
+- expected usage rate of the reports created from the models
+- infrastructure costs like BigQuery costs
