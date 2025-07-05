@@ -56,7 +56,35 @@ The datelist table becomes an efficient foundation for calculating:
 3. Increased query complexity
 
 ## **[Modelling Snowplow Event Data - Holistics.io](https://www.holistics.io/books/setup-analytics/modeling-example-a-real-world-use-case/)**
-Initial decision to model the data was based on the following factors
-- time vost to create a new model
-- expected usage rate of the reports created from the models
-- infrastructure costs like BigQuery costs
+
+### **Scenario**
+- The Holistics used Snowplow to track events on their website, these events were pushed to BigQuery
+- Side Note: Holistics is a data modelling tool similar to dbt and Looker
+- The raw events table from Snowplow was a large fact table with 130 columns and the subsequent data model built on top of that had 221 fields
+
+### **Data Modelling Approach**
+- The team first modelled the data on the pageview grain level because this was the level at which the sales and marketing team used the data
+- Moreover the reason why chose to model the data in the first place were the following:
+  - They knew and confirmed that the resultant data model (page view level) was going to be used extensively by the marketing and sales teams
+  - They estimated the cost of not building a model and letting the teams query off the raw events table vs the modelled data and it made sense to invest effort into building a model
+ 
+- This is an important lesson because they modelled the data when it was needed and as per the teams' needs and not vice versa.
+
+#### **Phase 1: Pageview-Level Model**
+- Challenge: Raw event data was too granular and expensive to query repeatedly.
+- Solution: Created an aggregated pageview model that:
+
+- Condensed raw events into pageview-level metrics
+- Added calculated fields like time spent, scroll depth, session stats
+- Reduced query complexity and costs significantly
+- Refreshed every 2 hours automatically
+- Key insight: They chose to model based on actual usage patterns, not theoretical best practices.
+
+#### **Phase 2: Session-Level Model**
+- Challenge: Marketing team needed funnel analysis and bounce rate calculations, which were difficult with pageview-grain data.
+- Solution: Created a session-level model that:
+
+- Rolled up pageview data into session summaries
+- Embedded complex business logic (bounce rate definitions) into the model
+- Made queries simpler by pre-calculating metrics
+- Built on top of the existing pageview model    
