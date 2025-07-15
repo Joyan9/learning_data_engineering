@@ -26,13 +26,30 @@ First a quick refresher on the prerequisities
 ## **Partioning in BigQuery**
 
 ### Pros of Partitioning
-- You cna reduce the query costs drastically if you partition the table appropriately, this is because BQ charges you based on the bytes read. Take the example below, we are querying the the google search trends public dataset, specifically the international top rising terms, the first query does not filter on the partitioned column and therefore has a query cost of 5.78 GB comparing to 234.57 MB when filtering down using the partitioned. Well this isn't exactly rocket science, the earlier you push down the predicates the better and partitioning let's you do just that
+- You can reduce the query costs drastically if you partition the table appropriately, this is because BQ charges you based on the bytes read. Take the example below, we are querying the the google search trends public dataset, specifically the international top rising terms, the first query does not filter on the partitioned column and therefore has a query cost of 5.78 GB comparing to 234.57 MB when filtering down using the partitioned. Well this isn't exactly rocket science, the earlier you push down the predicates the better and partitioning let's you do just that
 ```
 SELECT term 
 FROM `bigquery-public-data.google_trends.international_top_rising_terms` 
 WHERE refresh_date = "2025-07-13" AND country_name = "India"
 LIMIT 10
 ```
+- With partitioned table you unlock other features like automatically deleting older partitions or archive them to save on storage costs.
+  
 ### Cons of Partitioning
+- In BigQuery you can only partition based on a single column and you can only partition a table while creating it.
+- There certain platform specific restrictions for choosing the partition column as well
+
+Nevertheless as it is with every engineering decision, partitioning is also a game of trade-offs, it comes down to each specific use case whether it's worth partitioning or not. But generally I'd say we should partition fact tables and not dimensional tables.
+
+## **dlt-BigQuery Pipeline with Partitioning**
+To get started, let us first install dlt
+
+Here we install the bigquery and duckdb adapter, the latter will used for development.
+```bash
+pip install "dlt[bigquery]" "dlt[duckdb]"
+```
+
+For this tutorial we will be using the [OpenMeteo's Weather API](https://open-meteo.com/en/docs/dwd-api) to fetch Berlin's weather forecast.
+
 
 
