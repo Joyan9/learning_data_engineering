@@ -51,5 +51,123 @@ pip install "dlt[bigquery]" "dlt[duckdb]"
 
 For this tutorial we will be using the [OpenMeteo's Weather API](https://open-meteo.com/en/docs/dwd-api) to fetch Berlin's weather forecast.
 
+Let's first get a look at the data and the API
+```python
+import requests
+import pandas as pd
+
+# Coordinates for Berlin
+latitude = 52.52
+longitude = 13.41
+
+# Define API endpoint and parameters
+url = "https://api.open-meteo.com/v1/forecast"
+params = {
+	"latitude": latitude,
+	"longitude": longitude,
+	"hourly": ["temperature_2m", "precipitation", "apparent_temperature", "relative_humidity_2m"],
+	"models": "icon_seamless"
+}
+
+# Make the request
+response = requests.get(url, params=params)
+data = response.json()
+
+# Convert to pandas DataFrame
+df = pd.DataFrame(data["hourly"])
+print(df.head())
+```
+
+There several other weather fields you can add but for now we can keep it simple. The above code prints out a dataframe with columns `time`, `temperature_2m`, `precipitation`, `apparent_temperature` and `relative_humidity_2m`. Now, let's convert this code into a dlt pipeline. 
+
+To create a dlt pipeline you basically need two main things
+- a data source function that yields each records or a bunch of records
+- and a destination to ingest the records. For development we will use duckdb
+
+Below we have a simple dlt pipeline that loads hourly weather forecasts for the current day. The code essentially comprises of two functions, one is the dlt resource which is responsible for generating data and the main function initialises dlt's pipeline object to load data to the destination.
+```python
+import requests
+import dlt
+
+# Define API endpoint and parameters
+url = "https://api.open-meteo.com/v1/forecast"
+
+# define a dlt resource that yields data
+@dlt.resource(name="hourly_weather", primary_key="time", write_disposition="merge")
+def get_hourly_weather(latitude, longitude):
+    params = {
+	"latitude": latitude,
+	"longitude": longitude,
+	"hourly": ["temperature_2m", "precipitation", "apparent_temperature", "relative_humidity_2m"],
+	"models": "icon_seamless",
+    "forecast_days": 1
+    }
+    # Make the request
+    response = requests.get(url, params=params)
+    hourly_data = response.json()
+
+    # Extract the hourly data and metadata
+    hourly_variables = hourly_data["hourly"]
+    hourly_units = hourly_data["hourly_units"]
+    timestamps = hourly_variables["time"]
+
+    for i in range(len(timestamps)):
+        record = {"time": timestamps[i]}
+
+        # Add all weather variables with units in column name
+        for key in hourly_variables:
+            if key != "time":  # Skip time as we already added it
+                key_name = f"{key}_{hourly_units[key].strip()}"
+                record[key_name] = hourly_variables[key][i]
+
+        yield record
+
+def main():
+    # Create and configure the pipeline object
+    pipeline = dlt.pipeline(
+        pipeline_name="berlin_weather_data",
+        destination="duckdb", 
+        dataset_name="open_meteo_weather"
+    )
+
+    # Coordinates for Berlin
+    latitude = 52.52
+    longitude = 13.41
+    
+    pipeline.run(get_hourly_weather(latitude, longitude))
+
+    print(pipeline.last_trace)
+
+    print(pipeline.dataset().hourly_weather.df())
+
+if __name__ == "__main__":
+    main()
+```
+
+Now that we have our pipeline code ready we can move onto to modifying the destination to bigquery and setting the partitioning column.
+
+first we need to setup a service account in BigQuery, follow the steps below
+1. Log in to or create a [Google Cloud account](https://console.cloud.google.com/)
+
+2. Create a new Google Cloud project
+
+3. Create a service account and grant BigQuery permissions
+- You will then need to create a [service account](https://console.cloud.google.com/).
+- After clicking the Go to Create service account button on the linked docs page, select the project you created and name the service account whatever you would like.
+
+Click the Continue button and grant the following roles, so that dlt can create schemas and load data:
+
+BigQuery Data Editor
+BigQuery Job User
+BigQuery Read Session User
+You don't need to grant users access to this service account now, so click the Done button.
+
+6. Download the service account JSON
+
+In the service accounts table page that you're redirected to after clicking Done as instructed above, select the three dots under the Actions column for the service account you created and select Manage keys.
+
+This will take you to a page where you can click the Add key button, then the Create new key button, and finally the Create button, keeping the preselected JSON option.
+
+A JSON file that includes your service account private key will then be downloaded.
 
 
